@@ -1,0 +1,128 @@
+﻿<div id="avaliarProfissionalView"
+     data-role="view"
+     data-init="AvaliarProfissionalModel.init"
+     data-show="AvaliarProfissionalModel.show"
+     data-model="AvaliarProfissionalModel"
+     data-title="Avaliar Profissional"
+     data-layout="cliente-back-layout"
+     data-transition="overlay:up">
+
+    <div data-role="footer" style="background-color:white">
+        <div class="col-xs-12">
+            <a data-role="button" data-bind="click:enviar"
+               class="btn btn-green btn-block" style="font-family:UbuntuM; padding: 10px 0 10px 0 !important; margin-bottom:5px; margin-top:5px;">
+                <b>Enviar Avaliação</b>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="item" style="margin-top:20px;">
+
+            <div class="row">
+                <span class="col-xs-12">
+                    <label class="title" data-bind="text: tarefa.title"></label>
+                </span>
+            </div>
+
+            <div class="pessoa item-row">
+                <div class="table-cell">
+                    <div class="thumbnail">
+                        <img data-bind="attr: { src: quote.serviceProvider_Image }" onerror="imageError(this)"/>
+                    </div>
+                </div>
+                <span class="nome table-cell">
+                    <label>
+                        <b data-bind="text: quote.serviceProvider_Name"></b>
+                    </label>
+                </span>
+            </div>
+
+            <div class="item-row text-center">
+                <label class="horario" data-bind="text: date">
+                </label>
+            </div>
+
+            <div class="text-center item-row">
+                <label class="valor">
+                    Visita: <b data-bind="text: visitValue"></b>
+                </label>
+            </div>
+
+            <table class="avaliacao-table">
+                <tbody>
+                    <tr>
+                        <td class="text-right">
+                            <label>Pontualidade</label>
+                        </td>
+                        <td>
+                            <input id="pontualidade-nota" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-symbol="&#xf005;" data-size="xs" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-right">
+                            <label>Agilidade</label>
+                        </td>
+                        <td>
+                            <input id="agilidade-nota" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-symbol="&#xf005;" data-size="xs" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            <label>Atenção</label>
+                        </td>
+                        <td>
+                            <input id="atencao-nota" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-symbol="&#xf005;" data-size="xs" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            <label>Organização</label>
+                        </td>
+                        <td>
+                            <input id="organizacao-nota" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-symbol="&#xf005;" data-size="xs" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            <label>Valor Cobrado</label>
+                        </td>
+                        <td>
+                            <input id="preco-nota" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-symbol="&#xf005;" data-size="xs" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="text-center notafinal" style="margin-top:10px; padding-bottom:1em; background-color: #999;">
+                <input id="notafinal" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-symbol="&#xf005;" data-size="sm" data-readonly="true" />
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        $(".rating").rating({
+            clearButton: '<i class="fa fa-minus-circle"></i>'
+        });
+        $(".rating-active .rating").on("rating.change", function (event, value, caption) {
+            calculaNotaFinal();
+        });
+        $(".rating-active .rating").on("rating.clear", function (event) {
+            calculaNotaFinal();
+        });
+
+        function calculaNotaFinal() {
+            var total = Number($("#avaliarProfissionalView #pontualidade-nota").val());
+            total = total + Number($("#avaliarProfissionalView #agilidade-nota").val());
+            total = total + Number($("#avaliarProfissionalView #atencao-nota").val());
+            total = total + Number($("#avaliarProfissionalView #organizacao-nota").val());
+            total = total + Number($("#avaliarProfissionalView #preco-nota").val());
+            $('#avaliarProfissionalView #notafinal').rating('update', total / 5.0);
+        }
+    </script>
+
+</div>

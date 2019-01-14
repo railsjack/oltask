@@ -1,0 +1,134 @@
+﻿<div id="cliente-mainView"
+     data-role="view"
+     data-model="ClienteMainModel"
+     data-init="ClienteMainModel.init"
+     data-show="ClienteMainModel.show"
+     data-title="Painel de Controle"
+     data-layout="cliente-default-layout">
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top:5px;">
+            <div class="col-sm-12">
+                <button data-role="button" data-rel="modalview" href="#modalview-indicarOLTask"
+                        class="btn rounded btn-block btn-orange text-medium" style="font-size:1em !important; min-height:0 !important;">
+                    <i class="fa fa-user-plus"></i>
+                    <b>INDICAR OLTASK PARA UM AMIGO</b>
+                </button>
+
+            </div>
+        </div>
+
+        <div data-bind="visible: loaded">
+            <div data-bind="invisible: noTasks">
+                <div class="alert alert-success" role="alert" style="margin-top:10px;">
+                    <p><label><b>Parabéns, você recebeu solicitações para sua tarefa.</b></label></p>
+                    <p><label><i>Confira abaixo as propostas, selecione o profissional desejado e confirme o agendamento.</i></label></p>
+                </div>
+
+                <ul id="tarefas-publicadas-list" data-role="listview" data-source="ClienteMainModel.data" data-template="tarefas-template" data-pull-to-refresh="true" data-auto-bind="false"></ul>
+            </div>
+        </div>
+
+        <div class="text-center" data-bind="visible: noTasks">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+            <label><b><i>Você não tem nenhuma proposta.</i></b></label>
+        </div>
+
+        <div class="text-center" data-bind="visible: error">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+            <label><b><i>Houston, we have a problem. ):</i></b></label>
+        </div>
+
+    </div>
+
+    <script>
+        var quote;
+        function onQuoteSelected(event) {
+            var taskID = $('#' + event.target.id).attr('name');
+            quote = $('#' + event.target.id).val();
+            if ($('input[name=' + taskID + ']:checked') != null) {
+                $('#confirmButton' + taskID).show();
+            } else {
+                $('#confirmButton' + taskID).hide();
+            }
+        };
+    </script>
+
+</div>
+
+<script type="text/x-kendo-template" id="tarefas-template">
+
+    <div class="item">
+
+        <div class="row">
+            <div class="col-xs-8" >
+                <label class="title">#: title #</label>
+            </div>
+            <span class="col-xs-4 text-right" style="padding-left:0" onclick="cancelarTarefa(this)">
+                <label style="vertical-align: middle;margin:0;color:\#DC4650">Cancelar</label>
+                <button data-role="button" class="btn rounded btn-small btn-danger">
+                    <i class="fa fa-times"></i>
+                </button>
+            </span>
+        </div>
+
+        <label class="description">#: description #</label>
+        <br />
+
+        #if (quotes.length > 0) {#
+            #for (var i=0,len=quotes.length; i<len; i++){#
+                <div class="item-row pessoa table">
+                    <div data-role="button" data-rel="modalview" onclick="CartaoDoProfissionalModel.showCartao(#:quotes[i].serviceProvider_Id#)" class="table-cell icon-button">
+                        <div class="table-cell">
+                            <div class="thumbnail">
+                                <img src="#:quotes[i].serviceProvider_Image#" onerror="imageError(this)" />
+                            </div>
+                        </div>
+                        <div class="nome table-cell">
+                            <label>
+                                <b>#: quotes[i].serviceProvider_Name #</b>
+                            </label>
+                            #if (quotes[i].averageReview) {#
+                            <div class="star-rating">
+                                <div class="rating-container rating-fa" data-content="">
+                                    <div class="rating-stars" data-content="" style="width: #: quotes[i].averageReview/5 * 100  + '%' # ;"></div>
+                                </div>
+                            </div>
+                            #}#
+                        </div>
+                    </div>
+                    <div class="quote-selector table-cell">
+                        <input type="radio" id="#:quotes[i].quote_Id#" value="#:quotes[i].quote_Id#" name="#:service_Id#" onchange="onQuoteSelected(event)"/>
+                            <label for="#:quotes[i].quote_Id#"></label> 
+                    </div>
+                </div>
+
+                # var schedule = findScheduleById(schedules, quotes[i].appointment_Id)#
+                #if (schedule != null) {#
+                <div class="item-row text-center">
+                    <label class="horario">
+                        #:kendo.toString(kendo.parseDate(schedule.startAt), "dd/MM/yyyy")# -
+                        #:kendo.toString(kendo.parseDate(schedule.startAt), "HH':'mm")#
+                        às
+                        #:kendo.toString(kendo.parseDate(schedule.endAt), "HH':'mm")#
+                    </label>
+                </div>
+                #}#
+
+                <div class="item-row text-center">
+                    <label class="valor">
+                        Visita: <b>R$ #:kendo.toString(quotes[i].visitValue, "0.00")#</b>
+                    </label>
+                </div>
+            #}#
+        #}#
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-xs-12 text-right">
+                <button id="confirmButton#:service_Id#" class="btn btn-green btn-normal" style="display:none;" data-role="button" onclick="ClienteMainModel.agendar(#:service_Id#, quote)">Confirmar Agendamento</button>
+            </div>
+        </div>
+
+    </div>
+
+</script>

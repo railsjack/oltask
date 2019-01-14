@@ -1,0 +1,86 @@
+﻿<div data-role="view"
+     data-layout="profissional-home-layout"
+     data-model="ProfissionalPropostas"
+     data-title="Propostas">
+    <div class="container-fluid">
+        <ul id="tarefas-list" data-role="listview" data-source="ProfissionalPropostas.tarefasPublicadasPorCategoria" data-template="propostas-template" data-pull-to-refresh="true"></ul>
+    </div>
+
+
+</div>
+
+<script type="text/x-kendo-template" id="propostas-template">
+
+    <div class="item">
+
+        <div class="row">
+            <div class="col-xs-12"><label class="title">#: title #</label></div>
+        </div>
+
+        <div class="item-row pessoa table">
+            <div data-role="button" class="table-cell icon-button">
+                <div class="table-cell">
+                    <div class="thumbnail">
+                        <img src="#:data.image#" onerror="imageError(this)" />
+                    </div>
+                </div>
+                <div class="nome table-cell">
+                    <label>
+                        <b>#: customerName #</b>
+                    </label>
+                    #if (data.review) {#
+                    <div class="star-rating">
+                        <div class="rating-container rating-fa" data-content="">
+                            <div class="rating-stars" data-content="" style="width:  #: review/5 * 100  + '%' # ;"></div>
+                        </div>
+                    </div>
+                    #}#
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="width:100%;">
+            <div class="col-xs-12"><label>#: description #</label></div>
+        </div> 
+        
+        <div class="row">
+            #if (schedules[0] != null) {#
+            <div class="col-xs-6">
+                <label> #:kendo.toString(kendo.parseDate(schedules[0].startAt), "dd/MM/yyyy")# </label>
+            </div>  
+            <div class="col-xs-6 text-right">
+                <div>
+                    <label>#:kendo.toString(kendo.parseDate(schedules[0].startAt), "HH':'mm")#
+                        às
+                        #:kendo.toString(kendo.parseDate(schedules[0].entAt), "HH':'mm")#</label>
+                </div>
+                #if (schedules[1] != null) {#
+                <div>
+                    <label>#:kendo.toString(kendo.parseDate(schedules[1].startAt), "HH':'mm")#
+                        às
+                        #:kendo.toString(kendo.parseDate(schedules[1].entAt), "HH':'mm")#</label>
+                </div>
+                #}#
+            </div>
+            #}#
+        </div>
+
+        <div class="row" style="margin-top:5px; ">
+            <div class="col-xs-12">
+                <a data-role="button" data-rel="modalview" class="btn btn-green btn-block" style="font-size:1.2em !important;" onclick="myFunction( this )" href="\\#modalview-enviarProposta">
+                    Enviar proposta
+                </a>
+            </div>
+        </div>
+           
+    </div>
+
+</script>
+
+<script>
+    function myFunction(selectedJob) {
+        var selectedJobUID = $(selectedJob).parents("li:first").attr("data-uid");
+        ProfissionalPropostas.set("selectedJob", ProfissionalPropostas.tarefasPublicadasPorCategoria.getByUid(selectedJobUID));
+        ajustaDialogHeight($('#modalview-enviarProposta'));
+    }
+</script>

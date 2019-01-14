@@ -1,0 +1,46 @@
+.cliente-navbar {
+    background-color: rgba(10,149,200,1) !important;
+    color:white !important;
+}
+
+.cliente-navbar .btn-header:active {
+    color: white;
+}
+
+.cliente-navbar .btn-header:hover {
+    color: white;
+}
+
+.cliente-footer {
+    background-color:rgba(10,149,200,1) !important;
+}
+
+.cliente-footer .km-state-active {
+    background: rgba(10,149,200,1) !important;
+    background: -moz-linear-gradient(top, rgba(10,149,200,1) 0%, rgba(10,179,230,1) 100%) !important;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(10,149,200,1)), color-stop(100%, rgba(10,179,230,1))) !important;
+    background: -webkit-linear-gradient(top, rgba(10,149,200,1) 0%, rgba(10,179,230,1) 100%) !important;
+    background: -o-linear-gradient(top, rgba(10,149,200,1) 0%, rgba(10,179,230,1) 100%) !important;
+    background: -ms-linear-gradient(top, rgba(10,149,200,1) 0%, rgba(10,179,230,1) 100%) !important;
+    background: linear-gradient(to bottom, rgba(10,149,200,1) 0%, rgba(10,179,230,1) 100%) !important;
+}
+
+#cliente-pos-cadastro .km-content {
+    background-color: #0099CC !important;
+}
+
+#cliente-pos-cadastro .km-scroll-container {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.cliente-buttongroup .km-state-active {
+    background-color: rgba(10,149,200,1);
+}
+
+
+/* CONFIGURACOES STYLES */
+#clienteConfiguracoesView .list-config .config-item:active {
+    color:rgba(10,149,200,1);
+}

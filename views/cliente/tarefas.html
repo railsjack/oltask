@@ -1,0 +1,336 @@
+﻿<div id="clienteTarefasView"
+     data-role="view"
+     data-init="ClienteTarefasModel.init"
+     data-show="ClienteTarefasModel.show"
+     data-model="ClienteTarefasModel"
+     data-title="Minhas Tarefas"
+     data-layout="cliente-default-layout">
+
+    <header data-role="header">
+        <div data-role="navbar" class="cliente-navbar">
+            <span data-role="view-title"></span>
+            <button data-role="button" class="btn-header" data-align="right" href="views/cliente/configuracoes.html" style="width: 75px;height: 50px;padding: 0;margin: 0;text-align: right">
+                <i class="fa fa-bars text-right"></i>
+            </button>
+        </div>
+        <ul id="btnTarefasViewToggle" class="cliente-buttongroup" data-role="buttongroup" data-index="0" data-align="center">
+            <li><i><b>Agendadas</b></i></li>
+            <li><i><b>Pendentes</b></i></li>
+            <li><i><b>Concluídas</b></i></li>
+        </ul>
+    </header>
+
+    <div class="container-fluid">
+
+        <div id="agendadas" style="display:none">
+
+            <div data-bind="visible: agendadasLoaded">
+                <div data-bind="invisible: agendadasNoTasks">
+                    <div class="alert alert-success" role="alert">
+                        <p><label><b>Parabéns você está no caminho certo.</b></label></p>
+                        <p><label><i>Após a confirmação da visita, fique atento a sua agenda e não esqueça de reservar o valor combinado com o profissional</i></label></p>
+                    </div>
+                    <ul id="agendadas-list"></ul>
+
+                </div>
+            </div>
+
+            <div class="text-center" data-bind="visible: agendadasNoTasks">
+                <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+                <label><b><i>Você não tem tarefas agendadas.</i></b></label>
+            </div>
+            
+            <div class="text-center" data-bind="visible: agendadasError">
+                <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+                <label><b><i>Houston, we have a problem. ):</i></b></label>
+            </div>
+
+        </div>
+
+        <div id="pendentes" style="display:none">
+            
+            <div data-bind="visible: pendentesLoaded">
+                <div data-bind="invisible: pendentesNoTasks">
+                    <div class="alert alert-danger" role="alert">
+                        <p><label><b>Não recebeu propostas para sua tarefa?</b></label></p>
+                        <p><label><i>Modifique a data e os horários para tentar novos profissionais disponíveis.</i></label></p>
+                    </div>
+                    <ul id="pendentes-list"></ul>
+                </div>
+            </div>
+
+            <div class="text-center" data-bind="visible: pendentesNoTasks">
+                <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+                <label><b><i>Você não tem tarefas pendentes.</i></b></label>
+            </div>
+
+            <div class="text-center" data-bind="visible: pendentesError">
+                <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+                <label><b><i>Houston, we have a problem. ):</i></b></label>
+            </div>
+
+        </div>
+
+        <div id="concluidas" style="display:none">
+
+            <div data-bind="invisible: concluidasNoTasks">
+                <ul id="concluidas-list"></ul>
+            </div>
+
+            <div class="text-center" data-bind="visible: concluidasNoTasks">
+                <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+                <label><b><i>Você não tem tarefas concluidas.</i></b></label>
+            </div>
+
+            <div class="text-center" data-bind="visible: concluidasError">
+                <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+                <label><b><i>Houston, we have a problem. ):</i></b></label>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="agendadas-template">
+
+    <div class="item">
+        <div class="row">
+            <span class="col-xs-8">
+                <label class="title">#: title #</label>
+            </span>
+            <span class="col-xs-4 text-right" style="padding-left:0" onclick="cancelarTarefa(this)">
+                <label style="vertical-align: middle;margin:0;color:\#DC4650">Cancelar</label>
+                <button data-role="button" class="btn rounded btn-small btn-danger">
+                    <i class="fa fa-times"></i>
+                </button>
+            </span>
+        </div>
+
+        <label class="description">#: description #</label>
+
+        #selectedQuote = findQuoteById(quotes,selected_quoteId)#
+
+        #if (selectedQuote != null) {#
+
+        <div class="item-row pessoa #if (selectedQuote.status === QUOTE_CANCELADO) {#danger#} else {#success#}#">
+            <div class="table-cell">
+                <div class="thumbnail">
+                    <img src="#:selectedQuote.serviceProvider_Image#" onerror="imageError(this)" />
+                </div>
+            </div>
+            <div class="nome table-cell">
+                <label>
+                    <b>#: selectedQuote.serviceProvider_Name #</b>
+                </label>
+                #if (selectedQuote.averageReview) {#
+                <div class="star-rating">
+                    <div class="rating-container rating-fa" data-content="">
+                        <div class="rating-stars" data-content="" style="width: #: selectedQuote.averageReview/5 * 100  + '%' # ;"></div>
+                    </div>
+                </div>
+                #}#
+            </div>
+        </div>
+
+        #selectedQuoteSchedule = findScheduleById(schedules, selectedQuote.appointment_Id)#
+
+        #if (selectedQuoteSchedule != null) {#
+        <div class="item-row text-center">
+            <label class="horario">
+                #:kendo.toString(kendo.parseDate(selectedQuoteSchedule.startAt), "dd/MM/yyyy")# |
+                #:kendo.toString(kendo.parseDate(selectedQuoteSchedule.startAt), "HH':'mm")#
+                às
+                #:kendo.toString(kendo.parseDate(selectedQuoteSchedule.endAt), "HH':'mm")#
+            </label>
+        </div>
+        #}#
+
+        <div class="item-row text-center">
+            <label class="valor">
+                Visita: <b>R$ #:kendo.toString(selectedQuote.visitValue, "0.00")#</b>
+            </label>
+        </div>
+
+        #if (selectedQuote.status === QUOTE_CANCELADO) {#
+        <div class="table" style="margin-top:5px;">
+            <div class="table-cell">
+                <label class="danger" style="margin-right:10px;">
+                    <i class="fa fa-exclamation-circle"></i> O profissional cancelou a visita.
+                </label>
+            </div>
+            <div class="table-cell text-right">
+                <a data-role="button" data-rel="modalview" data-taskid="#: service_Id #" data-status="4"
+                   href="\\#modalview-republicarTarefa" class="btn btn-green btn-normal" style="word-wrap: break-word; white-space: normal;line-height:normal">
+                    <b>Publicar Novamente</b>
+                </a>
+            </div>
+        </div>
+        #} else if (kendo.parseDate(selectedQuoteSchedule.startAt) < new Date()) {#
+        <a data-role="button" onclick="concluirTarefa(this)" class="btn concluir" style="margin-top:5px; padding:5px;">
+            <i class="fa fa-check"></i>
+            <b>Tarefa Concluída</b>
+        </a>
+        #if(data.review == null && data.reviews.length == 0){#
+        <a data-role="button" class="btn avaliar" style="margin-top:5px; padding:5px;"
+           href="views/cliente/avaliarProfissional.html?taskId=#:service_Id#&quoteId=#:selectedQuote.quote_Id#&scheduleId=#:selectedQuoteSchedule.schedule_Id#">
+            <i class="fa fa-star"></i>
+            <b>Avaliar Profissional</b>
+        </a>
+        #}#
+        #}#
+
+        #}#
+
+
+
+    </div>
+
+</script>
+
+<script type="text/x-kendo-template" id="pendentes-template">
+
+    <div class="item">
+        <div class="row">
+            <span class="col-xs-8">
+                <label class="title">#: title #</label>
+            </span>
+            <span class="col-xs-4 text-right" style="padding-left:0" onclick="cancelarTarefa(this)">
+                <label style="vertical-align: middle;margin:0;color:\#DC4650">Cancelar</label>
+                <button data-role="button" class="btn rounded btn-small btn-danger">
+                    <i class="fa fa-times"></i>
+                </button>
+            </span>
+        </div>
+
+        <label class="description">#: description #</label>
+
+        #if (schedules.length > 0) {#
+        <div class="row">
+
+            #if (kendo.parseDate(schedules[0].endAt) < new Date() && (schedules[1] == null || kendo.parseDate(schedules[1].endAt) < new Date())) {
+            var republicarTarefa = true;
+            } else {
+            var republicarTarefa = false;
+            }#
+
+            <div class="#if(republicarTarefa){#col-xs-8#} else {# col-xs-12 #}#">
+                <div class="item-row text-center">
+                    <label><b>Dia: #:kendo.toString(kendo.parseDate(schedules[0].startAt), "dd/MM/yyyy")#</b></label>
+                </div>
+
+                #for (var i=0,len=schedules.length; i<len; i++){#
+                        <div class="item-row text-center">
+                            <label>
+                                <b>
+                                    #:kendo.toString(kendo.parseDate(schedules[i].startAt), "HH':'mm")#
+                                    às
+                                    #:kendo.toString(kendo.parseDate(schedules[i].endAt), "HH':'mm")#
+                                </b>
+                            </label>
+                        </div>
+                    #}#
+            </div>
+
+            #if (republicarTarefa) {#
+            <div class="col-xs-4" style="padding-left:0;">
+                <div class="bg-danger" style="margin-top:5px; padding:5px; color:white; font-family:UbuntuMI">
+                    <i class="fa fa-exclamation-circle"></i> Você não recebeu propostas para esta tarefa. Defina um novo prazo.
+                </div>
+            </div>
+            #}#
+
+        </div>
+        #}#
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-xs-12 text-right">
+                <button data-role="button" data-rel="modalview" data-taskid="#: service_Id #" data-status="2"
+                        href="\\#modalview-republicarTarefa" class="btn btn-green btn-normal">
+                    Publicar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/x-kendo-template" id="concluidas-template">
+
+    <div class="item">
+        #if (data.title) {#
+            <div class="row">
+                <span class="col-xs-10">
+                    <label class="title">#: title #</label>
+                </span>
+            </div>
+            #}#
+
+            #if (data.description) {#
+            <label class="description">#: description #</label>
+            #}#
+
+            #selectedQuote = findQuoteById(quotes,selected_quoteId)#
+
+            #if (selectedQuote != null) {#
+
+            <div class="item-row  pessoa">
+                <div class="table-cell">
+                    <div class="thumbnail">
+                        <img src="#:selectedQuote.serviceProvider_Image#" onerror="imageError(this)" />
+                    </div>
+                </div>
+                <div class="nome table-cell">
+                    <label>
+                        <b>#: selectedQuote.serviceProvider_Name #</b>
+                    </label>
+                    #if (selectedQuote.averageReview) {#
+                    <div class="star-rating">
+                        <div class="rating-container rating-fa" data-content="">
+                            <div class="rating-stars" data-content="" style="width: #: selectedQuote.averageReview/5 * 100  + '%' # ;"></div>
+                        </div>
+                    </div>
+                    #}#
+                </div>
+            </div>
+
+            #selectedQuoteSchedule = findScheduleById(schedules, selectedQuote.appointment_Id)#
+
+            #if (selectedQuoteSchedule != null) {#
+            <div class="item-row text-center">
+                <label class="horario">
+                    #:kendo.toString(kendo.parseDate(selectedQuoteSchedule.startAt), "dd/MM/yyyy")# |
+                    #:kendo.toString(kendo.parseDate(selectedQuoteSchedule.startAt), "HH':'mm")#
+                    às
+                    #:kendo.toString(kendo.parseDate(selectedQuoteSchedule.endAt), "HH':'mm")#
+                </label>
+            </div>
+            #}#
+
+            <div class="item-row  text-center">
+                <label class="valor">
+                    Visita: <b>R$ #:kendo.toString(selectedQuote.visitValue, "0.00")#</b>
+                </label>
+            </div>
+
+            #if (data.review) {#
+            <div class="item-row  nota">
+                <div class="content">
+                    <label>
+                        Sua Nota:
+                    </label>
+                    <div class="star-rating">
+                        <div class="rating-container rating-fa" data-content="">
+                            <div class="rating-stars" data-content="" style="width: #: review/5 * 100  + '%' # ;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            #}#
+        #}#
+
+    </div>
+
+</script>
+

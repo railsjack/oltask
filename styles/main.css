@@ -1,0 +1,1136 @@
+@font-face {
+   font-family: 'UbuntuL'; 
+   src: url('fonts/Ubuntu-L.ttf') format('truetype');     
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'UbuntuLI'; 
+   src: url('fonts/Ubuntu-LI.ttf') format('truetype');     
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'UbuntuRI'; 
+   src: url('fonts/Ubuntu-RI.ttf') format('truetype');     
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'UbuntuM'; 
+   src: url('fonts/Ubuntu-M.ttf') format('truetype');     
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'UbuntuMI'; 
+   src: url('fonts/Ubuntu-MI.ttf') format('truetype');     
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'UbuntuB'; 
+   src: url('fonts/Ubuntu-B.ttf') format('truetype');     
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'UbuntuBI'; 
+   src: url('fonts/Ubuntu-BI.ttf') format('truetype');     
+   font-weight: normal;
+   font-style: normal;
+}
+
+body {
+    background-color: white !important;
+}
+
+label {
+    font-family: UbuntuL;
+}
+
+label b {
+    font-family: UbuntuM;
+}
+
+.text-large {
+    font-size: 1.2em;
+}
+
+.text-larger {
+    font-size: 1.5em;
+}
+
+.text-green {
+    color: #64D264 !important;
+}
+
+.text-blue {
+    color: #0099CC !important;
+}
+
+.text-orange {
+    color: #FA8246 !important;
+}
+
+input::-webkit-input-placeholder {
+    font-family: 'UbuntuRI', Arial, Helvetica, sans-serif;
+}
+
+input:-ms-input-placeholder {
+    font-family: 'UbuntuRI', Arial, Helvetica, sans-serif;
+}
+
+input:-moz-placeholder {
+    font-family: 'UbuntuRI', Arial, Helvetica, sans-serif;
+}
+
+input::-moz-placeholder {
+    font-family: 'UbuntuRI', Arial, Helvetica, sans-serif;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="checkbox"],
+input[type="date"],
+input[type="number"] {
+    border-radius: 0;
+}
+
+input[type="date"]:before, input[type="time"]:before{
+    color: #999999;
+    content: attr(placeholder);
+}
+
+input[type="date"].full:before, input[type="time"].full:before {
+    color: red !important;
+    content: "" !important;
+}
+
+input.k-invalid {background-color: lightpink !important;}
+
+/* KENDO OVERRIDE */
+.km-view-title {
+    font-family:UbuntuMI;
+}
+
+.km-content {
+    background-color: white !important;
+}
+
+.km-text {
+    font-family: UbuntuL;
+}
+
+.km-text b {
+    font-family: UbuntuM;
+}
+
+.km-flat .km-list > li {
+    background-color: transparent;
+}
+
+.km-footer .km-icon:after, 
+.km-footer .km-icon:before {
+    font: 1em/1em "FontAwesome";
+}
+
+.km-footer .km-icon 
+{
+    width: 1.8rem !important;
+}
+
+.km-footer .km-home:after,
+.km-footer .km-home:before
+{
+    content: "\f015 ";
+}
+
+.km-footer .km-task:after,
+.km-footer .km-task:before
+{
+    content: "\f15c";
+}
+
+.km-footer .km-star:after,
+.km-footer .km-star:before
+{
+    content: "\f005";
+}
+
+.km-footer .km-bars:after,
+.km-footer .km-bars:before {
+    content: "\f0c9";
+}
+
+.km-footer .km-plus:after,
+.km-footer .km-plus:before {
+    content: "\f055";
+}
+
+.km-footer .km-tabstrip .km-text {
+    font-family: UbuntuLI;
+}
+
+.km-flat .km-loader:before {
+    background-color: rgba(10,149,200,1) !important;
+}
+
+.km-scroller-pull {
+    background-color: rgba(10,149,200,1) !important;
+}
+
+.k-select {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 2em;
+    width: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.k-select:before {
+    visibility: visible;
+    font-size: 0.8em !important;
+    font-family: FontAwesome;
+    content: '\f0d7'
+}
+
+.k-select .k-icon {
+   display:none;
+}
+
+.k-list li:first-child {
+    display: none;
+}
+
+.k-list .k-item.k-state-selected {
+    background-color: rgb(10,149,200) !important;
+}
+
+.k-tooltip.k-tooltip-validation.k-invalid-msg {
+    display: none !important;
+}
+
+.km-navbar .btn-header:active {
+    color: #4c5356;
+}
+
+.form-group span.k-dropdown.k-header {
+    padding: 0 !important;
+    position: relative;
+}
+
+.form-group span.k-dropdown.k-header .k-dropdown-wrap{
+    border:none;
+    display: block;
+}
+
+.form-group span.k-dropdown.k-header .k-dropdown-wrap .k-input {
+    line-height: 1.4em;
+    padding: 6px 12px;
+    display: block;
+}
+
+/* BOOTSTRAP OVERRIDE */
+.form-control {
+    border-radius: 0;
+    font-size: 14pt;
+    height: 40px;
+}
+
+/* STAR RATING OVERRIDE */
+.star-rating .caption {
+    display:none;
+}
+
+.star-rating .clear-rating {
+}
+
+.star-rating.rating-disabled .clear-rating {
+    display:none;
+}
+
+
+.profissional-buttongroup.km-buttongroup .km-button.km-state-active {
+   background-color:rgb(100,210,100);
+}
+
+.btn {
+    font-family: UbuntuL;
+    border-radius:0 !important;
+}
+
+.btn b {
+    font-family: UbuntuM;
+}
+
+.btn.rounded {
+    border-radius:3px !important;
+}
+
+.btn-conectar {
+    background-color: #33CC66 !important;
+    color: white !important;
+    font-size: 1.2em !important;
+    font-style: italic;
+    font-weight: 700;
+    border-radius: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-height:40px;
+}
+
+.btn-media {
+    color: white !important;
+    border-radius: 0 !important;
+    text-align: center;
+    font-size: 2.5em;
+    padding-top: 5px !important;
+    padding-bottom: 0 !important;
+    font-style: italic;
+}
+
+.btn-facebook {
+    background-color: #005A82 !important;
+    margin-bottom: 10px;
+}
+
+.btn-twiter {
+    background-color: #00D2F0 !important;
+    margin-bottom: 10px;
+}
+
+.btn-google {
+    background-color: #dd4b39 !important;
+    margin-bottom: 10px;
+}
+
+.btn-criar-conta {
+    background-color: #5A5A64 !important;
+    color: white !important;
+    font-size: 1.2em;
+    border-radius: 3px !important;
+}
+
+.btn-danger {
+    background-color: #DC4650 !important;
+    color:white;
+}
+
+.btn-blue {
+    background-color: #0099CC !important;
+    color: white !important;
+    font-size: 1.5em !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+.btn-green {
+    background-color: #64D264 !important;
+    color: white !important;
+    font-size: 1.5em !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+.btn-orange {
+    background-color: #FA8246 !important;
+    color: white !important;
+    font-size: 1.5em !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+.btn-yellow {
+    background-color: #FAC800 !important;
+    color: white !important;
+    font-size: 1.5em !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+.btn-red {
+    background-color: #DC4650 !important;
+    color: white !important;
+    font-size: 1.5em !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+.btn-small {
+    min-height:0 !important;
+    padding: 0 4px 0 4px !important;
+    font-size: 1em !important; 
+}
+
+.btn-normal {
+    min-height:0 !important;
+    padding: 6px !important;
+    font-size: 1em !important; 
+    border-radius: 0;
+}
+
+.btn-acessar-perfil {
+    background-color: #003C64 !important;
+    color: white !important;
+    font-family: UbuntuB;
+    border-radius:3px !important;
+}
+
+.buttonMain {
+    min-height: 200px;
+    text-align: center;
+}
+
+.btn-footer {
+    height:50px; 
+    border-radius:0; 
+    font-size:1.2em; 
+    font-weight:bold; 
+    border-width: 1px 1px 0 0; 
+    border-color:#777; 
+    background-color:white;
+}
+
+.btn-footer:focus {
+    border-width: 1px 1px 0 0; 
+    border-color:#777; 
+    background-color:white;
+    outline: none !important;
+    box-shadow: 0;
+}
+
+.btn-footer:hover {
+    border-width: 1px 1px 0 0; 
+    border-color:#777; 
+    background-color: #EEE;
+}
+
+.btn-footer.btn-default {
+    color:#0099CC
+}
+
+.btn-footer.btn-default:active {
+    background-color: #0099CC;
+    color:white;
+}
+
+.btn-footer.btn-danger {
+    background-color:white !important;
+    color:#DC4650 !important;
+}
+
+.btn-footer.btn-danger:active {
+    background-color:#DC4650 !important;
+    color:white !important;
+}
+
+.btn-header {
+    min-width:50px; 
+    text-align:left; 
+    background-color:transparent !important;
+    border-color: transparent !important;
+}
+
+.text-medium-italic {
+    font-family: UbuntuMI;
+}
+
+.text-medium {
+    font-family: UbuntuM;
+}
+
+.bg-gray {
+    background-color: #EFEFEF;
+}
+
+.bg-darkgray {
+    background-color: #666;
+}
+
+.bg-danger {
+    background-color: #DC4650;
+}
+
+label.danger {
+    color: #DC4650;
+    font-family: UbuntuLI;
+}
+
+.label_cliente_main {
+    color: white;
+    margin-left: 30px;
+    width: calc(100% - 90px);
+}
+
+.img-cliente-main {
+    background-size: cover;
+    background-color: transparent;
+    height: 50px;
+    width: 50px;
+    border-color: transparent;
+    margin-left: 15px;
+}
+
+.img-circular {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    background-size: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.badge-cliente-main {
+    font-size: 1.2em;
+    min-width: 40px;
+    height: 25px;
+    border-radius: 5px;
+    position: absolute;
+    left: 40px;
+    top: 25px;
+}
+
+.icon-button {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    padding: 0 !important;
+}
+
+.icon-button:active {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.icon-button .km-badge {
+    top: 2em;
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.badge-danger {
+    background-color: #DC4650;
+}
+
+.badge-success {
+    background-color: #64D264;
+}
+
+.badge-warning {
+    background-color: #FAC800;
+}
+
+.table {
+    display: table;
+}
+
+.table-cell {
+    vertical-align:middle; 
+    display:table-cell;
+}
+
+/*CADASTRO ESCOLHA ESTILOS*/
+.choice-option {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.choice-option label {
+    display: block;
+    font-family: UbuntuL;
+    font-size: 1.5em;
+}
+
+.choice-option a:active label {
+    color: #4c5356;
+}
+
+.thumbnail.rounded {
+    border-radius:50%; 
+}
+
+.thumbnail.rounded img {
+    border-radius:50%; 
+}
+
+/*CADASTRO STYLES*/
+.cadastro-header {
+    display: table;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.cadastro-header .image {
+    width: 80px;
+    padding: 0;
+}
+
+.cadastro-header .title {
+    display: table-cell;
+    float: none;
+    table-layout: fixed;
+    vertical-align: middle;
+    width: 100%;
+    padding: 0 0 0 5px;
+}
+
+.cadastro-termos {
+    color: #777;
+}
+
+/* CADASTRO COM SUCESSO STYLES */
+.cadastro-sucesso label {
+    margin:0;
+    color:white;
+    font-size:1.2em;
+    font-family:UbuntuMI;
+}
+
+
+/*.tarefa-item .profissional.cancelada {
+    background-color: #DC4650;
+}
+
+.tarefa-item .profissional.confirmada {
+    background-color: #64D264;
+}
+
+
+.tarefa-item .profissional .thumbnail {
+    border-radius:50%; 
+    height:3em; 
+    width:3em; 
+    border-width:1.5px; 
+    border-color:#666; 
+    margin-bottom:0; 
+    float:left;
+}
+
+.tarefa-item .profissional .thumbnail img {
+    border-radius:50%; 
+    max-height: 100%;
+}
+
+.tarefa-item .profissional .name {
+    width: 100%; 
+    padding-left:5px; 
+    padding-right:5px;
+    text-align:left;
+    font-size: 1.2em;
+    color: #888;
+}
+
+.tarefa-item .profissional.cancelada .name, .tarefa-item .profissional.confirmada .name{
+   color: white;
+}
+
+.tarefa-item .profissional .name label {
+    margin:0;
+}
+
+.tarefa-item .quote-schedule {
+    color: #888;
+    font-family: UbuntuL;
+}
+
+.tarefa-item .quote-valor {
+    color: #888;
+    font-family: UbuntuL;
+}
+
+.tarefa-item .concluida {
+    background-color: #64D264;
+    color:white;
+    font-family: UbuntuB;
+    width: 100%;
+    border:none;
+    margin:0;
+    border-radius:0;
+    font-size:1em;
+}
+
+.tarefa-item .avaliar {
+    background-color: #E5C100;
+    color:white;
+    font-family: UbuntuB;
+    width: 100%;
+    border:none;
+    margin:0;
+    border-radius:0;
+    font-size:1em;
+}
+
+.quote-selector input[type=radio] + label {
+    margin-right: 10px;
+    margin-top: 10px;
+    background-image: url('../images/oltask_aplicativo_icon_confirmar_off.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+}
+
+.quote-selector input[type=radio]:checked + label {
+    background-image: url('../images/oltask_aplicativo_icon_confirmar.png');
+}
+
+.tarefa-item .nota {
+    background:#999;
+    color:white;
+    font-family: UbuntuM;
+}
+
+.tarefa-item .nota .fa {
+    font-size: 1.5em;
+}*/
+
+/* CARTAO DO PROFISSIONAL STYLES*/
+#modalview-cartaoDoProfissional .km-header .km-navbar{
+    background: #64D264;
+    background: -moz-linear-gradient(top, #6EE66E 30%, #64D264 30%);
+    background: -webkit-gradient(left top, left bottom, color-stop(30%,#6EE66E), color-stop(30%, #64D264));
+    background: -webkit-linear-gradient(top, #6EE66E 30%, #64D264 30%);
+    background: -o-linear-gradient(top,  #6EE66E 30%, #64D264 30%);
+    background: -ms-linear-gradient(top,  #6EE66E 30%, #64D264 30%);
+    background: linear-gradient(to bottom, #6EE66E 30%, #64D264 30%);
+    border-radius: 5px 5px 0 0;
+    padding:10px 20px 10px 20px;
+    color:white;
+}
+
+#modalview-cartaoDoProfissional .km-content {
+    border-radius: 0 0 5px 5px;
+}
+
+#modalview-cartaoDoProfissional .close-button {
+    background: transparent;
+    border-color:white;
+}
+
+#modalview-cartaoDoProfissional .close-button:hover {
+    color:white;
+}
+
+#modalview-cartaoDoProfissional .km-header .km-rightitem {
+    height: 0;
+}
+
+#modalview-cartaoDoProfissional .km-view-title {
+    line-height: normal;
+}
+
+#modalview-cartaoDoProfissional .profissional.thumbnail {
+    width: 100px;
+    height: 100px;
+    display: inline;
+    margin: 10px;
+}
+
+#modalview-cartaoDoProfissional .name {
+    font-size: 1em;
+    max-width:250px;
+    font-family: UbuntuMI;
+}
+
+#modalview-cartaoDoProfissional .age {
+    font-size: 1em;
+    font-family: UbuntuLI;
+    margin:0;
+}
+
+#modalview-cartaoDoProfissional .info-list {
+    margin: 15px 0 0 0;
+}
+
+#modalview-cartaoDoProfissional .info-list li {
+    border: none;
+    padding:0;
+}
+
+#modalview-cartaoDoProfissional .info-list li .fa {
+    font-size: 2em;
+    margin-right: 5px;
+    color: #999;
+    width: 30px;
+    text-align:center;
+    float:left;
+}
+
+#modalview-cartaoDoProfissional .info-list li .info {
+    float:left;
+    padding-left:10px;
+    border-width: 0 0 0 1px;
+    border-style:solid;
+    border-color: #999;
+    margin-bottom: 10px;
+    width: calc(100% - 40px);
+}
+
+#modalview-cartaoDoProfissional .info-list li .info-title {
+    font-size: 1.5em;
+    font-family: UbuntuL;
+    margin: 0;
+}
+
+#modalview-cartaoDoProfissional .info-list li .info-description {
+    font-size: 1em;
+    font-family: UbuntuL;
+    margin:0;
+}
+
+#modalview-cartaoDoProfissional .media-avaliacao {
+    width:2.2em;
+    height:12.5em;
+    background-color:#666;
+    position:fixed;
+    right: 1.5em;
+    text-align:center;
+}
+
+#modalview-cartaoDoProfissional .media-avaliacao .star-rating {
+    font-size:2em;
+    position:absolute;
+    left:0.1em;
+    overflow: hidden;
+}
+
+
+#modalview-cartaoDoProfissional .media-avaliacao .star-rating .star {
+    color:#777;
+    display:block;
+    margin-bottom:5px;
+}
+
+#modalview-cartaoDoProfissional .media-avaliacao .star-rating.selected .star {
+    color:#E5C100;
+}
+
+.arrow-top {
+	width: 0; 
+	height: 0; 
+	border-right: 1.1em solid transparent; 
+	border-left: 1.1em solid transparent; /* 40px height (20+20) */
+	border-bottom: 0.7em solid white;
+    position:absolute;
+    bottom:-1px;
+}
+
+/*VISITA AGENDADA STYLES*/
+#clienteAgendamentoView .km-content {
+    background-color: #64D264 !important;
+}
+
+#clienteAgendamentoView .km-scroll-container {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+#clienteAgendamentoView label {
+    display:block;
+    margin:0;
+    color:white;
+    font-size:1.2em;
+    font-family: UbuntuMI;
+}
+
+#clienteAgendamentoView .thumbnail {
+    margin:10px 0 10px 0;
+}
+
+/* AVALIACAO DO PROFISSIONAL STYLES */
+.avaliacao-table {
+    width: 100%;
+}
+
+.avaliacao-table td:nth-child(1) {  
+  vertical-align: bottom; 
+  padding-right: 0.5em;
+}
+
+.avaliacao-table label{
+    font-size:1.2em;
+    font-family:UbuntuL;
+    color:#888;
+}
+
+/* DIALOG STYLES */
+.dialog .km-view-title {
+    background-color:transparent;
+    padding: 10px 10px 0 20px;
+    text-align: left;
+}
+
+.dialog .km-navbar {
+    border-radius: 5px 5px 0 0;
+    background-color: white;
+}
+
+.dialog .km-view-title .title {
+    width: calc(100% - 5em);
+    line-height: normal;
+    font-family: UbuntuB;
+}
+
+.dialog .km-content {
+    border-radius: 0 0 5px 5px;
+}
+
+.dialog .km-scroll-container {
+    background-color: transparent;
+}
+
+.dialog .description {
+    font-family: UbuntuL;
+    font-size:1.2em;
+    color:#888;
+}
+
+.dialog .row.gray input {
+    background-color: transparent;
+    border: none;
+    line-height:normal;
+    outline: none;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+}
+
+.dialog .close-button {
+    background-color:transparent;
+    color: #4c5356;
+    width: 70px;
+    height:40px;
+}
+
+#modalview-republicarTarefa .btn-confirma {
+    background-color: #EFEFEF;
+    border:none;
+    width: 100%;
+    border-radius:0;
+    font-family: UbuntuB;
+}
+
+#modalview-republicarTarefa .btn-confirma .img {
+    height:30px;
+    width:30px;
+    background: url(../images/oltask_aplicativo_icon_confirmar_off.png) no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+#modalview-republicarTarefa .btn-confirma.km-state-active .km-text {
+    color: #4c5356;
+}
+
+#modalview-republicarTarefa .btn-confirma:active .km-text{
+    color: #64D264;
+}
+
+#modalview-republicarTarefa .btn-confirma:active .img {
+    background: url(../images/oltask_aplicativo_icon_confirmar.png) no-repeat;
+    background-size: cover;
+    border:none;
+}
+
+/* CONFIGURACOES STYLES */
+.list-config li {
+    border-width: 0 0 1px 0 !important;
+    border-radius:0 !important;
+    padding:0;
+    color: grey;
+}
+
+.list-config li:last-child {
+    border-width: 0;
+}
+
+.list-config .config-item {
+    border:none;
+    background:transparent;
+    text-align: left;
+    padding: 12px 0!important;
+}
+
+.list-config .config-item.km-state-active {
+    color: grey;
+}
+
+.list-config .config-item > i {
+    font-size: 20px !important;
+    vertical-align: middle;
+    min-width: 30px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.list-config .config-item > .km-text > i{
+    font-size: 20px;
+    vertical-align: middle;
+    min-width: 30px;
+    text-align: center;
+}
+
+.list-config .config-item > label {
+    font-size: 18px !important;
+    margin-bottom: 0;
+
+}
+.list-config .config-item > .km-text > label {
+    font-size: 18px !important;
+    margin-bottom: 0;
+}
+
+.list-config hr {
+    margin: 5px;
+}
+
+.list-config .list-config {
+    padding: 0 10px 5px 10px;
+}
+
+.list-config .list-config li, .list-config .list-config li:last-child {
+    border-width: 1px 0 0 0 !important;
+}
+
+
+/*===== ITEM STYLES =====*/
+.item label {
+    font-family:UbuntuL;
+    color: #888;
+}
+
+.item label.danger {
+    color: #DC4650;
+}
+
+.item .item-row {
+    padding:5px;
+    background-color: #EFEFEF;
+    margin: 5px 0 0 0;
+}
+
+.item .item-row.success {
+    background-color: #64D264;
+    color:white;
+}
+
+.item .item-row.danger {
+    background-color: #DC4650;
+    color:white;
+}
+
+.item .item-row.danger label, .item .item-row.success label{
+    color:white;
+}
+
+.item .title {
+    font-family: UbuntuM;
+    font-size: 120%;
+    color: #4c5356;
+}
+
+.item .description {
+    color: #777;
+}
+
+.item .item-row.pessoa .thumbnail {
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    border-width: 1.5px;
+    border-color: #666;
+    margin-bottom: 0;
+    float: left;
+}
+
+.item .item-row.pessoa .thumbnail img {
+    border-radius: 50%;
+    height: 100%;
+    width:100%;
+}
+
+.item .item-row.pessoa .nome{
+    width: 100%; 
+    padding-left:5px; 
+    padding-right:5px;
+    text-align:left;
+    font-size: 1.2em;
+    color: #888;
+}
+
+.item .item-row.pessoa .star-rating {
+    display:table-cell;
+    font-size: 0.8em;
+}
+
+.item .item-row.pessoa .rating-container {
+    vertical-align:top;
+}
+
+.item .quote-selector input[type=radio] + label {
+    margin-right: 10px;
+    margin-top: 10px;
+    background-image: url('../images/oltask_aplicativo_icon_confirmar_off.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+}
+
+.item .quote-selector input[type=radio]:checked + label {
+    background-image: url('../images/oltask_aplicativo_icon_confirmar.png');
+}
+
+.item .item-row.nota {
+    background-color: #888;
+}
+
+.item .item-row.nota label {
+    color:white;
+    font-family: UbuntuM;
+}
+
+.item .item-row.nota content {
+    display:table;
+}
+
+.item .item-row.nota label{
+    display:table-cell;
+}
+
+.item .item-row.nota .star-rating {
+    display:table-cell;
+    font-size: 1.5em;
+}
+
+.item .btn.concluir {
+    background-color: #64D264;
+    color:white;
+    font-family: UbuntuB;
+    width: 100%;
+    border:none;
+    margin:0;
+    border-radius:0;
+    font-size:1em;
+}
+
+.item .btn.avaliar {
+    background-color: #E5C100;
+    color:white;
+    font-family: UbuntuB;
+    width: 100%;
+    border:none;
+    margin:0;
+    border-radius:0;
+    font-size:1em;
+}

@@ -1,0 +1,41 @@
+.profissional-navbar {
+    background-color: rgb(100,210,100) !important;
+    color:white !important;
+}
+
+.profissional-footer {
+    background-color:rgb(100,210,100);
+}
+
+.profissional-footer .km-state-active {
+    background: rgb(100,210,100) !important;
+    background: -moz-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%) !important;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgb(100,210,100)), color-stop(100%, rgb(110,230,110))) !important;
+    background: -webkit-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%) !important;
+    background: -o-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%) !important;
+    background: -ms-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%) !important;
+    background: linear-gradient(to bottom, rgb(100,210,100) 0%, rgb(110,230,110) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d264', endColorstr='#6ee66e', GradientType=0 ) !important;
+}
+
+#profissional-pos-cadastro .km-content {
+    background-color: #64D264 !important;
+}
+
+#profissional-pos-cadastro .km-scroll-container {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.row_profissional_main {
+    padding: 15px 15px 15px 15px;
+    background: rgb(100,210,100);
+    background: -moz-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgb(100,210,100)), color-stop(100%, rgb(110,230,110)));
+    background: -webkit-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%);
+    background: -o-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%);
+    background: -ms-linear-gradient(top, rgb(100,210,100) 0%, rgb(110,230,110) 100%);
+    background: linear-gradient(to bottom, rgb(100,210,100) 0%, rgb(110,230,110) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64d264', endColorstr='#6ee66e', GradientType=0 );
+}

@@ -1,0 +1,108 @@
+﻿<div data-role="view"
+     data-model="CadastroModel"
+     data-title="Cadastro"
+     data-init="CadastroModel.initCadastroCliente"
+     data-layout="default-back-layout"
+     data-use-native-scrolling="true">
+
+    <div class="container" style="padding-top:10px;">
+
+        <div class="row cadastro-header">
+
+            <div class="col-xs-4 image">
+                <img src="images/cliente_icon_on.png" alt="" />
+            </div>
+            <div class="col-xs-8 title">
+                <label class="text-blue text-larger">
+                    <i><b>Cadastro de Clientes</b></i>
+                </label>
+            </div>
+
+        </div>
+
+        <form id="cadastroClienteForm" style="margin-top: 10px;" data-role="validator">
+            <label class="text-large"><i>Dados Pessoais</i></label>
+            <div class="form-group">
+                <input type="text" id="firstname" name="name" data-bind="value: novoUsuario.Name" class="form-control" placeholder="Nome" required="required">
+            </div>
+            <div class="form-group">
+                <input type="text" name="telefone" data-bind="value: novoUsuario.PhoneNumber" class="form-control" placeholder="Telefone" required="required">
+            </div>
+            <div class="form-group">
+                <select id="gender" placeholder="Sexo" class="form-control" data-bind="value: novoUsuario.Gender" required="required">
+                    <option value="male">M</option>
+                    <option value="female">F</option>
+                </select>
+            </div>
+
+            <div data-bind="invisible: externalProvider">
+                <label class="text-large"><i>Dados de Localização</i></label>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="CEP" required="required">
+                </div>
+
+                <div class="form-group">
+                    <input id="estados" class="form-control" placeholder="Estado" required="required">
+                </div>
+
+                <div class="form-group">
+                    <input id="cidades" disabled="disabled" placeholder="Cidade" class="form-control" required="required">
+                </div>
+
+                <div class="form-group">
+                    <input id="bairros" data-bind="value: novoUsuario.neighborhoodId" disabled="disabled" placeholder="Bairro" class="form-control" required="required">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" data-bind="value: novoUsuario.street" class="form-control" placeholder="Rua / Av. / Praça" required="required">
+                </div>
+
+                <div class="col-xs-8" style="padding-left:0;">
+                    <div class="form-group">
+                        <input type="text" data-bind="value: novoUsuario.complement" class="form-control" placeholder="Complemento">
+                    </div>
+                </div>
+
+                <div class="col-xs-4" style="padding:0;">
+                    <div class="form-group">
+                        <input type="number" data-bind="value: novoUsuario.number" class="form-control" placeholder="N°" required="required">
+                    </div>
+                </div>
+            </div>
+
+            <div data-bind="invisible: externalProvider">
+                <label class="text-large"><i>Dados de Acesso</i></label>
+                <div class="form-group">
+                    <input type="text" data-bind="value: novoUsuario.Email" class="form-control" placeholder="E-mail" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="text" data-bind="value: emailConfirmacao" class="form-control" placeholder="Confirmar E-mail" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="password" data-bind="value: novoUsuario.password" class="form-control" placeholder="Senha" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="password" data-bind="value: novoUsuario.confirmPassword" class="form-control" placeholder="Confirmar Senha" required="required">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label class="cadastro-termos">
+                        <input id="checkboxTermosDeUso" type="checkbox" value="">
+                        Li e concordo com os <a class="text-blue"><i>termos de uso</i></a>. Estou ciente de meus direitos e deveres quanto usuário desta plataforma web.
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-6 col-xs-offset-6" style="padding-left:0">
+                    <button data-role="button" class="btn rounded btn-block btn-blue" data-bind="click: cadastraCliente">cadastrar</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+

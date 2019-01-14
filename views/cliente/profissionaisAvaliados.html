@@ -1,0 +1,80 @@
+﻿
+<div id="profissionaisAvaliadosView"
+     data-role="view"
+     data-title="Profissionais Avaliados"
+     data-model="ProfissionaisAvaliadosModel"
+     data-init="ProfissionaisAvaliadosModel.init"
+     data-show="ProfissionaisAvaliadosModel.show"
+     data-layout="cliente-default-layout">
+
+    <div class="container-fluid">
+
+        <div class="alert" role="alert" style="margin-bottom:0; padding-bottom:0;" data-bind="invisible: error">
+            <label><b>Suas avaliações podem pesar na hora da escolha.</b></label>
+            <label><i>Ao contratar e avaliar um profissional, você colabora com o desenvolvimento da comunidade OLTask.</i></label>
+        </div>
+
+        <ul id="profissionaisAvaliados-list" data-role="listview" data-source="ProfissionaisAvaliadosModel.reviews" data-template="profissionaisAvaliados-template" data-pull-to-refresh="true" data-auto-bind="false"></ul>
+
+        <div class="text-center" data-bind="visible: noReviews">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+            <label><b><i>Você não avaliou nenhum profissional ainda.</i></b></label>
+        </div>
+
+        <div class="text-center" data-bind="visible: error">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+            <label><b><i>Houston, we have a problem. ):</i></b></label>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="profissionaisAvaliados-template">
+
+    <div class="item">
+        <div class="item-row pessoa">
+            <div class="table-cell">
+                <div class="thumbnail">
+                    <img src="#:data.image#" onerror="imageError(this)" />
+                </div>
+            </div>
+            <div class="nome table-cell">
+                #if (data.name) {#
+                <label>
+                    <b>#: name #</b>
+                </label>
+                #}#
+                #if (data.globalScore) {#
+                <div class="star-rating">
+                    <div class="rating-container rating-fa" data-content="">
+                        <div class="rating-stars" data-content="" style="width: #: globalScore/5 * 100  + '%' # ;"></div>
+                    </div>
+                </div>
+                #}#
+            </div>
+        </div>
+
+        #if (data.categorie) {#
+        <div class="item-row">
+            <label>Categoria: #: categorie #</label>
+        </div>
+        #}#
+
+        #if (data.score) {#
+        <div class="item-row nota">
+            <div class="content">
+                <label>
+                    Sua Nota:
+                </label>
+                <div class="star-rating">
+                    <div class="rating-container rating-fa" data-content="">
+                        <div class="rating-stars" data-content="" style="width: #: score/5 * 100  + '%' # ;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        #}#
+    </div>
+
+</script>

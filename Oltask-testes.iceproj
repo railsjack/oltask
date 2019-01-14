@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>f696c0dd-f03e-4206-87d8-a21cce8e545a</ProjectGuid>
+    <ProjectName>Oltask-testes</ProjectName>
+    <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <ItemGroup>
+    <Content Include=".abignore" />
+    <Content Include=".abproject" />
+    <Content Include=".debug.abproject" />
+    <Content Include=".release.abproject" />
+    <Content Include="App_Resources\iOS\config.xml" />
+    <Content Include="App_Resources\WP8\config.xml" />
+    <Content Include="bootstrap\bootstrap-theme.min.css" />
+    <Content Include="bootstrap\bootstrap.min.css" />
+    <Content Include="bootstrap\bootstrap.min.js" />
+    <Content Include="choice.html" />
+    <Content Include="fontawesome\css\font-awesome.css" />
+    <Content Include="fontawesome\css\font-awesome.min.css" />
+    <Content Include="fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="fontawesome\less\animated.less" />
+    <Content Include="fontawesome\less\bordered-pulled.less" />
+    <Content Include="fontawesome\less\core.less" />
+    <Content Include="fontawesome\less\fixed-width.less" />
+    <Content Include="fontawesome\less\font-awesome.less" />
+    <Content Include="fontawesome\less\icons.less" />
+    <Content Include="fontawesome\less\larger.less" />
+    <Content Include="fontawesome\less\list.less" />
+    <Content Include="fontawesome\less\mixins.less" />
+    <Content Include="fontawesome\less\path.less" />
+    <Content Include="fontawesome\less\rotated-flipped.less" />
+    <Content Include="fontawesome\less\stacked.less" />
+    <Content Include="fontawesome\less\variables.less" />
+    <Content Include="fontawesome\scss\font-awesome.scss" />
+    <Content Include="fontawesome\scss\_animated.scss" />
+    <Content Include="fontawesome\scss\_bordered-pulled.scss" />
+    <Content Include="fontawesome\scss\_core.scss" />
+    <Content Include="fontawesome\scss\_fixed-width.scss" />
+    <Content Include="fontawesome\scss\_icons.scss" />
+    <Content Include="fontawesome\scss\_larger.scss" />
+    <Content Include="fontawesome\scss\_list.scss" />
+    <Content Include="fontawesome\scss\_mixins.scss" />
+    <Content Include="fontawesome\scss\_path.scss" />
+    <Content Include="fontawesome\scss\_rotated-flipped.scss" />
+    <Content Include="fontawesome\scss\_stacked.scss" />
+    <Content Include="fontawesome\scss\_variables.scss" />
+    <Content Include="i18n\pt-BR\Strings.json" />
+    <Content Include="images\cliente_icon.png" />
+    <Content Include="images\cliente_icon_on.png" />
+    <Content Include="images\oltask_aplicativo_facebook_circle.png" />
+    <Content Include="images\oltask_aplicativo_facebook_circle_on.png" />
+    <Content Include="images\oltask_aplicativo_google_circle.png" />
+    <Content Include="images\oltask_aplicativo_google_circle_on.png" />
+    <Content Include="images\oltask_aplicativo_icon_agenda.png" />
+    <Content Include="images\oltask_aplicativo_icon_alerta.png" />
+    <Content Include="images\oltask_aplicativo_icon_canvelar.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\oltask_aplicativo_icon_clientes-avaliados.png" />
+    <Content Include="images\oltask_aplicativo_icon_confirmar.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\oltask_aplicativo_icon_confirmar_off.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\oltask_aplicativo_icon_erro.png" />
+    <Content Include="images\oltask_aplicativo_icon_foto.png" />
+    <Content Include="images\oltask_aplicativo_icon_foto2.png" />
+    <Content Include="images\oltask_aplicativo_icon_negocios-fechados.png" />
+    <Content Include="images\oltask_aplicativo_icon_nova-tarefa.png" />
+    <Content Include="images\oltask_aplicativo_icon_padlock.png" />
+    <Content Include="images\oltask_aplicativo_icon_profissionais-favoritos.png" />
+    <Content Include="images\oltask_aplicativo_icon_propostas-enviadas.png" />
+    <Content Include="images\oltask_aplicativo_icon_setings.png" />
+    <Content Include="images\oltask_app_icon_white.png" />
+    <Content Include="images\oltask_app_login_marca_branca_top.png" />
+    <Content Include="images\parceiro_icon_on.png" />
+    <Content Include="images\profissional_icon_on.png" />
+    <Content Include="images\oltask_aplicativo_twitter_circle.png" />
+    <Content Include="images\oltask_aplicativo_twitter_circle_on.png" />
+    <Content Include="images\oltask_app_icon.png" />
+    <Content Include="images\parceiro_icon.png" />
+    <Content Include="images\profissional_icon.png" />
+    <Content Include="images\oltask.png" />
+    <Content Include="images\user_icon.png" />
+    <Content Include="kendo\js\kendo.all.min.js" />
+    <Content Include="kendo\js\kendo.culture.pt-BR.js" />
+    <Content Include="scripts\appData.js" />
+    <Content Include="scripts\appConfig.js" />
+    <Content Include="scripts\controller\CadastroController.js" />
+    <Content Include="scripts\controller\cliente\AgendamentoController.js" />
+    <Content Include="scripts\controller\cliente\AvaliarProfissionalController.js" />
+    <Content Include="scripts\controller\cliente\ProfissionaisAvaliadosController.js" />
+    <Content Include="scripts\controller\cliente\TarefasController.js" />
+    <Content Include="scripts\controller\cliente\MainController.js" />
+    <Content Include="scripts\controller\ConfiguracaoController.js" />
+    <Content Include="scripts\controller\IndicarOLTaskController.js" />
+    <Content Include="scripts\controller\LoginController.js" />
+    <Content Include="scripts\controller\cliente\NovaTarefaController.js" />
+    <Content Include="scripts\oauthConfig.js" />
+    <Content Include="scripts\jso.js" />
+    <Content Include="scripts\profissional.js" />
+    <Content Include="scripts\controller\cliente\CartaoDoProfissionalController.js" />
+    <Content Include="star-rating\css\star-rating.min.css" />
+    <Content Include="star-rating\img\loading.gif" />
+    <Content Include="star-rating\js\star-rating.min.js" />
+    <Content Include="styles\cliente.css" />
+    <Content Include="styles\parceiro.css" />
+    <Content Include="styles\profissional.css" />
+    <Content Include="styles\fonts\Ubuntu-B.ttf" />
+    <Content Include="styles\fonts\Ubuntu-BI.ttf" />
+    <Content Include="styles\fonts\Ubuntu-C.ttf" />
+    <Content Include="styles\fonts\Ubuntu-L.ttf" />
+    <Content Include="styles\fonts\Ubuntu-LI.ttf" />
+    <Content Include="styles\fonts\Ubuntu-M.ttf" />
+    <Content Include="styles\fonts\Ubuntu-MI.ttf" />
+    <Content Include="styles\fonts\Ubuntu-R.ttf" />
+    <Content Include="styles\fonts\Ubuntu-RI.ttf" />
+    <Content Include="styles\fonts\UbuntuMono-B.ttf" />
+    <Content Include="styles\fonts\UbuntuMono-BI.ttf" />
+    <Content Include="styles\fonts\UbuntuMono-R.ttf" />
+    <Content Include="styles\fonts\UbuntuMono-RI.ttf" />
+    <Content Include="views\cliente\agendamento.html" />
+    <Content Include="views\cliente\tarefas.html" />
+    <Content Include="views\cliente\avaliarProfissional.html" />
+    <Content Include="views\cliente\cadastro.html" />
+    <Content Include="cordova.android.js" />
+    <Content Include="cordova.ios.js" />
+    <Content Include="cordova.wp8.js" />
+    <Content Include="index.html" />
+    <Content Include="kendo\js\jquery.min.js" />
+    <Content Include="kendo\js\kendo.mobile.min.js" />
+    <Content Include="kendo\styles\images\back.png" />
+    <Content Include="kendo\styles\images\kendoui.svg" />
+    <Content Include="kendo\styles\images\kendoui.ttf" />
+    <Content Include="kendo\styles\images\kendoui.woff" />
+    <Content Include="kendo\styles\images\wp8_icons.png" />
+    <Content Include="kendo\styles\images\wp8_inverseicons.png" />
+    <Content Include="kendo\styles\kendo.mobile.all.min.css" />
+    <Content Include="kendo\typescript\jquery.d.ts" />
+    <Content Include="kendo\typescript\kendo.mobile.d.ts" />
+    <Content Include="views\cliente\profissionaisAvaliados.html" />
+    <Content Include="views\cliente\main.html" />
+    <Content Include="scripts\main.js" />
+    <Content Include="Solution.sln" />
+    <Content Include="Solution.v12.suo" />
+    <Content Include="styles\main.css" />
+    <Content Include="views\cliente\novaTarefa.html" />
+    <Content Include="views\cliente\cadastroComSucesso.html" />
+    <Content Include="views\cliente\configuracoes.html" />
+    <Content Include="views\parceiro\cadastro.html" />
+    <Content Include="views\parceiro\cadastroComSucesso.html" />
+    <Content Include="views\profissional\agendaDeTarefas.html" />
+    <Content Include="views\profissional\avaliarCliente.html" />
+    <Content Include="views\profissional\cadastro.html" />
+    <Content Include="views\profissional\cadastroComSucesso.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\profissional\configuracoes.html" />
+    <Content Include="views\profissional\proposta.html">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
+    <Resource Include="App_Resources\iOS\Default-568h@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-667h.png" />
+    <Resource Include="App_Resources\iOS\Default-736h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape-667h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape-736h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait@2x.png" />
+    <Resource Include="App_Resources\iOS\Default.png" />
+    <Resource Include="App_Resources\iOS\Default@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-40.png" />
+    <Resource Include="App_Resources\iOS\icon-40@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-40@3x.png" />
+    <Resource Include="App_Resources\iOS\icon-60.png" />
+    <Resource Include="App_Resources\iOS\icon-60@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-60@3x.png" />
+    <Resource Include="App_Resources\iOS\icon-72.png" />
+    <Resource Include="App_Resources\iOS\icon-72@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-76.png" />
+    <Resource Include="App_Resources\iOS\icon-76@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small@2x.png" />
+    <Resource Include="App_Resources\iOS\icon.png" />
+    <Resource Include="App_Resources\iOS\icon@2x.png" />
+    <Resource Include="App_Resources\WP8\ApplicationIcon.png" />
+    <Resource Include="App_Resources\WP8\SplashScreenImage.jpg" />
+    <Resource Include="App_Resources\WP8\Tiles\Iconic\110x110.png" />
+    <Resource Include="App_Resources\WP8\Tiles\Iconic\202x202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Resources\" />
+    <Folder Include="App_Resources\Android\" />
+    <Folder Include="App_Resources\Android\drawable-hdpi\" />
+    <Folder Include="App_Resources\Android\drawable-ldpi\" />
+    <Folder Include="App_Resources\Android\drawable-mdpi\" />
+    <Folder Include="App_Resources\Android\drawable-nodpi\" />
+    <Folder Include="App_Resources\iOS\" />
+    <Folder Include="App_Resources\WP8\" />
+    <Folder Include="App_Resources\WP8\Tiles\" />
+    <Folder Include="App_Resources\WP8\Tiles\Iconic\" />
+    <Folder Include="fontawesome\css\" />
+    <Folder Include="fontawesome\fonts\" />
+    <Folder Include="fontawesome\less\" />
+    <Folder Include="fontawesome\scss\" />
+    <Folder Include="i18n\pt-BR\" />
+    <Folder Include="images\" />
+    <Folder Include="kendo\" />
+    <Folder Include="kendo\js\" />
+    <Folder Include="kendo\styles\" />
+    <Folder Include="kendo\styles\images\" />
+    <Folder Include="kendo\typescript\" />
+    <Folder Include="fontawesome\" />
+    <Folder Include="bootstrap\" />
+    <Folder Include="i18n\" />
+    <Folder Include="Plugins\" />
+    <Folder Include="scripts\" />
+    <Folder Include="scripts\controller\" />
+    <Folder Include="scripts\controller\cliente\" />
+    <Folder Include="star-rating\" />
+    <Folder Include="star-rating\css\" />
+    <Folder Include="star-rating\img\" />
+    <Folder Include="star-rating\js\" />
+    <Folder Include="styles\" />
+    <Folder Include="styles\fonts\" />
+    <Folder Include="views\" />
+    <Folder Include="views\cliente\" />
+    <Folder Include="views\parceiro\" />
+    <Folder Include="views\profissional\" />
+  </ItemGroup>
+  <Import Project="$(IceniumTargets)Build.targets" />
+</Project>

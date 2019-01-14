@@ -1,0 +1,9 @@
+#parceiro-pos-cadastro .km-content {
+    background-color: #FA8246 !important;
+}
+
+#parceiro-pos-cadastro .km-scroll-container {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}

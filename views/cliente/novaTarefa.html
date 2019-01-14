@@ -1,0 +1,172 @@
+﻿<div data-role="view"
+     id="novaTarefaView"
+     data-init="NovaTarefaModel.init"
+     data-show="NovaTarefaModel.show"
+     data-model="NovaTarefaModel"
+     data-title="Nova Tarefa"
+     data-layout="cliente-back-layout"
+     data-transition="overlay:up"
+     data-use-native-scrolling="true">
+
+    <!--<div data-role="footer" style="background-color:white">
+        <div class="container-fluid">
+            <div class="col-xs-6" style="padding-right:5px;">
+                <button data-role="button" data-bind="click: show"
+                        class="btn btn-red btn-block" style="height:2em; margin-bottom:5px;">
+                    <b><i>Limpar</i></b>
+                </button>
+            </div>
+
+            <div class="col-xs-6" style="padding-left:5px;">
+                <button data-role="button" data-bind="click: publicar"
+                        class="btn btn-blue btn-block" style="height:2em; margin-bottom:5px;">
+                    <b><i>Publicar</i></b>
+                </button>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="container-fluid">
+
+        <div class="alert" role="alert" style="margin-bottom:0; padding-bottom:0;">
+            <label><b>Publique sua tarefa e encontre o Profissional certo para resolver o seu problema!</b></label>
+            <label><i>Preencha os campos com atenção e tente descrever sua tarefa de forma clara e objetiva.</i></label>
+        </div>
+
+        <form id="novaTarefaForm" style="padding: 10px 15px 10px 15px;" data-role="validator">
+
+            <div class="form-group">
+                <input type="text" data-bind="value: novaTarefa.Address.CEP" class="form-control" placeholder="CEP" required="required">
+            </div>
+
+            <div class="form-group">
+                <input id="estados" class="form-control" required="required">
+            </div>
+
+            <div class="form-group">
+                <input id="cidades" disabled="disabled" placeholder="Cidade" class="form-control" required="required">
+            </div>
+
+            <div class="form-group">
+                <input id="bairros" disabled="disabled" placeholder="Bairro" class="form-control" required="required">
+            </div>
+
+            <div class="form-group">
+                <input type="text" data-bind="value: novaTarefa.Address.Street" class="form-control" placeholder="Rua / Av. / Praça" required="required">
+            </div>
+
+            <div class="col-xs-8" style="padding-left:0;">
+                <div class="form-group">
+                    <input type="text" data-bind="value: novaTarefa.Address.Complement" class="form-control" placeholder="Complemento">
+                </div>
+            </div>
+
+            <div class="col-xs-4" style="padding:0;">
+                <div class="form-group">
+                    <input type="number" min="0" data-bind="value: novaTarefa.Address.Number" class="form-control" placeholder="Número" required="required">
+                </div>
+            </div>
+
+            <div class="checkbox" style="margin-bottom:15px; color:#777;">
+                <label>
+                    <input type="checkbox" data-bind="checked: novaTarefa.urgent" style="height: 30px;width: 30px;margin: -5px 0 0 -20px;"> <b style="margin-left: 20px;">URGENTE</b>
+                </label>
+            </div>
+
+            <div class="form-group" data-bind="invisible: novaTarefa.urgent">
+                <input id="data" type="date" name="date" class="form-control" placeholder="Data" data-required-if-not-urgent>
+            </div>
+
+            <div class="row" data-bind="invisible: novaTarefa.urgent">
+                <div class="col-xs-5" style="margin-right:0; padding-right:0;">
+                    <div class="form-group">
+                        <input id="horaInicio1" type="time" step='60' name="horaInicio1" class="form-control" placeholder="Início" data-required-if-not-urgent>
+                    </div>
+                </div>
+
+                <div class="col-xs-2" style="margin:0; padding:0; text-align:center; top:10px;">
+                    <label><i>às</i></label>
+                </div>
+
+                <div class="col-xs-5" style="margin-left:0; padding-left:0;">
+                    <div class=" form-group">
+                        <input id="horaFim1" type="time" name="horaFim1" class="form-control" placeholder="Fim" data-required-if-not-urgent>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 10px;text-align: center;" data-bind="invisible: novaTarefa.urgent">
+                <label><i>ou</i></label>
+            </div>
+
+            <div class="row" data-bind="invisible: novaTarefa.urgent">
+                <div class="col-xs-5" style="margin-right:0; padding-right:0;">
+                    <div class="form-group">
+                        <input id="horaInicio2" type="time" step='60' name="horaInicio2" class="form-control" placeholder="Início" data-required-if-not-urgent>
+                    </div>
+                </div>
+
+                <div class="col-xs-2" style="margin:0; padding:0; text-align:center; top:10px;">
+                    <label><i>às</i></label>
+                </div>
+
+                <div class="col-xs-5" style="margin-left:0; padding-left:0;">
+                    <div class=" form-group">
+                        <input id="horaFim2" type="time" name="horaFim2" class="form-control" placeholder="Fim" data-required-if-not-urgent>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input id="categorias" class="form-control" required="required" />
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="title" data-bind="value: novaTarefa.Service.Title" class="form-control" placeholder="Titulo" required="required">
+            </div>
+
+            <div class="form-group">
+                <textarea name="description" data-bind="value: novaTarefa.Service.Description" class="form-control" placeholder="Descrição da Tarefa" required="required"></textarea>
+            </div>
+
+            <label><b>Dificuldades para publicar sua tarefa?</b></label>
+            <label><i>Confira <a class="text-blue">aqui</a> alguns exemplos.</i></label>
+        </form>
+
+        <div class="col-xs-6" style="padding-right:5px;">
+            <button data-role="button" data-bind="click: show"
+                    class="btn btn-red btn-block" style="height:2em; margin-bottom:5px;">
+                <b><i>Limpar</i></b>
+            </button>
+        </div>
+
+        <div class="col-xs-6" style="padding-left:5px;">
+            <button data-role="button" data-bind="click: publicar"
+                     class="btn btn-blue btn-block" style="height:2em; margin-bottom:5px;">
+                <b><i>Publicar</i></b>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        $("#phone_number").kendoMaskedTextBox({
+            mask: "(999) 000-0000"
+        });
+
+        $("input[type=date]").change(function () {
+            if ($(this).val() == null || $(this).val() === "") {
+                $(this).removeClass("full");
+            } else {
+                $(this).addClass("full");
+            }
+        });
+        $("input[type=time]").change(function () {
+            if ($(this).val() == null || $(this).val() === "") {
+                $(this).removeClass("full");
+            } else {
+                $(this).addClass("full");
+            }
+        });
+    </script>
+
+</div>

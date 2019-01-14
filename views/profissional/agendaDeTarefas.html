@@ -1,0 +1,142 @@
+﻿<div id="agendaDeTarefasView"
+     data-role="view"
+     data-init="AgendaDeTarefas.init"
+     data-model="AgendaDeTarefas"
+     data-title="Agenda de Tarefas"
+     data-layout="profissional-home-layout">
+    
+    <header data-role="header">
+        <div data-role="navbar" class="profissional-navbar">
+            <span data-role="view-title"></span>
+            <button data-role="button" class="btn-header" data-align="right" href="views/profissional/configuracoes.html" style="width: 75px;height: 50px;padding: 0;margin: 0;text-align: right">
+                <i class="fa fa-bars text-right"></i>
+            </button>
+        </div>
+        <ul id="btnAgendaProfissionalViewToggle" class="profissional-buttongroup" data-role="buttongroup" data-index="0" data-align="center">
+            <li><i><b>Agendadas</b></i></li>
+            <li><i><b>Pendentes</b></i></li>
+            <li><i><b>Histórico</b></i></li>
+        </ul>
+    </header>
+
+    <div class="container-fluid">
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-sm-12">
+                <button class="btn btn-block btn-orange" style="font-size:1em !important; min-height:0 !important;">
+                    <i class="fa fa-user-plus"></i>
+                    INDICAR OLTASK PARA UM AMIGO
+                </button>
+            </div>
+        </div>
+
+        <div id="agendadas" style="display:none">
+
+            <div data-bind="visible: tarefasAgendadas.data().length > 0">
+                <div class="alert alert-success" role="alert">
+                    <p><label><b>Parabéns você está no caminho certo.</b></label></p>
+                    <p><label><i>Após a confirmação da visita, fique atento a sua agenda e não esqueça de reservar o valor combinado com o profissional</i></label></p>
+                </div>
+                <ul id="tarefas-list" data-role="listview" data-source="AgendaDeTarefas.data" data-template="agenda-template" data-pull-to-refresh="true"></ul>
+
+            </div>
+
+            <div class="text-center" data-bind="visible: tarefasAgendadas.data().length <= 0">
+                <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+                <label><b><i>Você não tem tarefas agendadas.</i></b></label>
+            </div>
+
+        </div>
+
+        
+       
+
+        
+
+    </div>
+
+    <div data-role="modalview" id="modalview-publicar-tarefa" style="width: 90%; height:80% !important;">
+        <div data-role="header">
+            <div data-role="navbar" style="background-color:white; border-color:white;">
+
+            </div>
+        </div>
+
+        <div data-role="footer" style="background-color:white; padding-bottom:5px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12" style="text-align:right;">
+                        <a class="btn btn-green" id="modalview-reg-button" data-role="button" data-align="right" style="font-size:1em !important;">
+                            Salvar Alterações
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="agenda-template">
+    <div class="agenda-item">
+        <div class="row" style="width:100%;">
+           
+            <div class="col-xs-12 text-right" style="color:red">cancelar<img src="../../images/oltask_aplicativo_icon_canvelar.png" style="margin:0 0 0 5px;width:0.7em;height:0.7em;"/></div>
+        </div>
+        
+        <div class="row" style="width:100%;">
+            <div class="col-xs-6"><span><b>#: title #</b></span></div>
+            <div class="col-xs-6 text-right">Fotos<img src="../../images/oltask_aplicativo_icon_foto2.png" style="margin:0 0 0 5px;width:0.7em;height:0.7em;" /></div>
+        </div>
+        <div class="row" style="width:100%;">
+            <div class="col-xs-12"><span>#: description #</span></div>
+        </div>
+        <div class="agenda-item-profissional" style="margin-top:10px; padding:10px;background-color:lightgray; display: table; text-align: center;"
+             >
+            <div class="thumbnail" style="border-radius:50%; height:55px; width:55px; border-width:1.5px; margin-bottom:0; float:left">
+                <img src="http://files.fundodovaleservicos.webnode.com.br/system_preview_detail_200000002-9ec629fc00-public/encanador%202.jpg" style="border-radius:50%; max-height: 100%;" />
+            </div>
+            <span style="display:table-cell; float: none; table-layout: fixed; vertical-align: middle; width: 100%; padding-left:5px; padding-right:5px; text-align:left;">
+                #: customer_Name #
+            </span>
+            <span style="display:table-cell; float: none; table-layout: fixed; vertical-align: bottom; width: 100%; padding-left:5px; padding-right:5px; text-align:left;">
+                
+                #: review #
+            </span>
+            
+        </div>
+
+
+       
+        <div class="agenda-item-profissional" >
+
+            <div style="background-color:lightgray;margin-top:5px;padding:3px;">
+                #: schedule.replace("between","-").replace("and","às")  #
+            </div>
+        </div>
+        <div class="agenda-item-profissional">
+
+            <div style="background-color:lightgray;margin-top:5px;padding:3px;">
+                Valor: <b>R$#: visitValue  #</b>
+            </div>
+        </div>
+        <div class="row" style="margin-top:5px; ">
+            <div class="col-xs-12">
+                <a data-role="button" class="btn btn-yellow btn-block" style="font-size:1.2em !important;" href="views/profissional/avaliarCliente.html">
+                    <i class="fa fa-star"></i>
+                    Avaliar Cliente
+                </a>
+            </div>
+        </div>
+      
+    </div>
+</script>
+
+
+
+<script>
+    function closeModal() {
+        $("#modalview-publicar-tarefa").kendoMobileModalView("close");
+    };
+</script>
+

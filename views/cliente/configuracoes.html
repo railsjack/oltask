@@ -1,0 +1,189 @@
+﻿<div id="clienteConfiguracoesView"
+     data-model="ClienteConfiguracoesModel"
+     data-role="view"
+     data-init="ClienteConfiguracoesModel.init"
+     data-title="OLTask"
+     data-layout="cliente-back-layout"
+     data-transition="overlay:up"
+     data-use-native-scrolling="true">
+
+    <div data-role="header">
+        <div data-role="navbar" class="cliente-navbar">
+            <button data-role="backbutton" data-click="onBack" class="btn-header" data-align="left" style="width: 75px;height: 50px;padding: 0;margin: 0;">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <span data-bind="text: account.userName"></span>
+        </div>
+    </div>
+
+    <ul class="list-config" id="accordion" role="tablist" aria-multiselectable="true" style="padding: 10px;">
+
+        <li class="list-group-item ">
+
+            <div class="config-item"
+                 data-toggle="collapse"
+                 data-parent="#accordion"
+                 href="#collapseConfiguracoes"
+                 aria-expanded="false"
+                 aria-controls="collapseConfiguracoes">
+                <i class="fa fa-cog"></i>
+                <label>Configurações</label>
+            </div>
+
+
+            <div id="collapseConfiguracoes"
+                 class="panel-col lapse collapse"
+                 role="tabpanel"
+                 aria-labelledby="headingOne">
+
+                <ul class="list-config" id="accordion" role="tablist" aria-multiselectable="true">
+                    <li class="list-group-item">
+
+                        <div class="config-item"
+                             data-toggle="collapse"
+                             data-parent="#accordion"
+                             href="#collapseOne"
+                             aria-expanded="false"
+                             aria-controls="collapseOne">
+                            <label>Informações pessoais</label>
+                        </div>
+                        <div id="collapseOne"
+                             class="panel-col  lapse collapse"
+                             role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <div class="panel-body" style="padding-top: 0;">
+                                <button data-role="button" data-bind="click: editarAccount, invisible: editingAccount" class="btn btn-default" style="float: right;border:none;">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                                <div class="row">
+                                    <div class="col-xs-12 table" style="margin-bottom:0">
+                                        <i class="fa fa-map-marker table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                        <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                            <label style="font-size:2em;" data-bind="text: account.state_name"></label>
+                                            <label data-bind="text: account.city_name"></label>
+                                            <br />
+                                            <label data-bind="text: account.street"></label>, <label data-bind="text: account.number"></label>, <label data-bind="text: account.neighborhood_name"></label>.
+                                            <br />
+                                            <div data-bind="visible: account.CEP">
+                                                <label>CEP</label> <label data-bind="text: account.CEP"></label>
+                                            </div>
+                                        </div>
+
+                                        <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                            <input id="clienteConfigCep" data-bind="value: account.CEP" name="cep" type="text" class="form-control" placeholder="CEP" style="margin-bottom: 5px;">
+                                            <input id="clienteConfigEstados" name="estado" type="text" class="form-control" placeholder="estado" style="margin-bottom: 5px;">
+                                            <input id="clienteConfigCidades" name="cidade" type="text" class="form-control" placeholder="cidade" style="margin-bottom: 5px;">
+                                            <input id="clienteConfigBairros" name="bairro" type="text" class="form-control" placeholder="bairro" style="margin-bottom: 5px;">
+                                            <input id="clienteConfigRua" data-bind="value: account.street" name="rua" type="text" class="form-control" placeholder="rua / avenida" style="margin-bottom: 5px;">
+                                            <input id="clienteConfigNumero" data-bind="value: account.number" name="numero" type="number" class="form-control" placeholder="número" style="margin-bottom: 5px;">
+                                            <input id="clienteConfigComplemento" name="complemento" type="text" class="form-control" placeholder="complemento">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<hr />
+                                <div class="row">
+                                    <div class="col-xs-12 table" style="margin-bottom:0">
+                                        <i class="fa fa-birthday-cake table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                        <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                            <label data-bind="text: formattedBirthday"></label>
+                                        </div>
+                                        <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                            <input name="birthday" type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <hr />
+                                <!--<div class="row">
+                                    <div class="col-xs-12 table" style="margin-bottom:0">
+                                        <i class="fa fa-at table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                        <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                            <label data-bind="text: account.email"></label>
+                                        </div>
+                                        <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                            <input name="email" type="email" class="form-control" placeholder="email">
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="row" style="margin-top:0.5em;">
+                                    <div class="col-xs-12 table" style="margin-bottom:0">
+                                        <i class="fa fa-mobile table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                        <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                            <label data-bind="text: account.phone"></label>
+                                        </div>
+                                        <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                            <input name="phone" type="tel" class="form-control" placeholder="telefone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:0.5em;">
+                                    <div class="col-xs-12 table" style="margin-bottom:0">
+                                        <i class="fa fa-phone table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                        <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                            <label data-bind="text: account.cel"></label>
+                                        </div>
+                                        <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                            <input name="cel" type="tel" class="form-control" placeholder="celular">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" data-bind="visible: editingAccount" style="margin-bottom:5px;">
+                                <div class="pull-right">
+                                    <button data-role="button" data-bind="click: showConfirmDialog" class="btn btn-green" style="font-size:1em !important;">Salvar alterações</button>
+                                </div>
+                                <div class="pull-right" style="margin-right:10px;">
+                                    <button data-role="button" data-bind="click: cancelar" class="btn btn-red" style="font-size:1em !important;">Cancelar alterações</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <li class="list-group-item ">
+                        <div class="config-item" data-bind="click: showAlterarSenhaDialog" />
+                            <label>Alterar Senha</label>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="config-item btn-block" data-role="button" href="views/cliente/novaTarefa.html">
+                <i class="fa fa-plus-circle"></i>
+                <label>Publicar Nova Tarefa</label>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="config-item btn-block" data-role="button" href="views/cliente/tarefas.html">
+                <i class="fa fa-tasks"></i>
+                <label>Minhas Tarefas</label>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="config-item btn-block" data-role="button" href="views/cliente/profissionaisAvaliados.html">
+                <i class="fa fa-star"></i>
+                <label>Profissionais Avaliados</label>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="config-item btn-block" data-role="button" data-rel="modalview" href="#modalview-indicarOLTask">
+                <i class="fa fa-user-plus"></i>
+                <label>Indicar OLTask para um amigo</label>
+            </div>    
+        </li>
+
+        <li class="list-group-item">
+            <div class="config-item btn-block" data-role="button" onclick="javascript: logout()">
+                <i class="fa fa-power-off"></i>
+                <label>Deslogar</label>
+            </div>
+        </li>
+
+    </ul>
+
+</div>

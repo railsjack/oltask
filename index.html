@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>OLTask</title>
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css" />
+    <link href="star-rating/css/star-rating.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/cliente.css" rel="stylesheet" />
+    <link href="styles/profissional.css" rel="stylesheet" />
+    <link href="styles/parceiro.css" rel="stylesheet" />
+
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="kendo/js/kendo.culture.pt-BR.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="star-rating/js/star-rating.min.js"></script>
+
+    <script src="scripts/jso.js"></script>
+
+    <script src="scripts/appConfig.js"></script>
+    <script src="scripts/oauthConfig.js"></script>
+    <script src="scripts/appData.js"></script>
+    <script src="scripts/controller/ConfiguracaoController.js"></script>
+    <script src="scripts/controller/LoginController.js"></script>
+    <script src="scripts/controller/CadastroController.js"></script>
+    <script src="scripts/controller/IndicarOLTaskController.js"></script>
+    <script src="scripts/controller/cliente/MainController.js"></script>
+    <script src="scripts/controller/cliente/AgendamentoController.js"></script>
+    <script src="scripts/controller/cliente/CartaoDoProfissionalController.js"></script>
+    <script src="scripts/controller/cliente/TarefasController.js"></script>
+    <script src="scripts/controller/cliente/AvaliarProfissionalController.js"></script>
+    <script src="scripts/controller/cliente/ProfissionaisAvaliadosController.js"></script>
+    <script src="scripts/controller/cliente/NovaTarefaController.js"></script>
+    <script src="scripts/profissional.js"></script>
+    <script src="scripts/main.js"></script>
+</head>
+
+<body>
+
+    <!--LOGIN DIV-->
+    <div id="LoginView" data-role="view" data-model="LoginModel" data-show="LoginModel.resetaCampos" data-title="OLTask.com">
+        <div class="container" style="margin:1rem 1rem 0 1rem;">
+
+            <label class="text-large"><i><b>Conecte-se</b></i></label>
+
+            <form id="loginForm" data-role="validator" novalidate="novalidate">
+
+                <input type="hidden" name="grant_type" value="password" />
+                <div class="form-group">
+                    <input type="text" id="username" name="username" data-bind="value: username" class="form-control" placeholder="Login (e-mail)" required="required" validationmessage="Sem o Login não entra!" />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password" data-bind="value: password" class="form-control" placeholder="Senha" required="required" validationmessage="Sem a senha também não!" />
+                </div>
+                <div class="form-group col-xs-6 col-xs-offset-6" style="padding:0">
+                    <button data-role="button" class="btn btn-block btn-conectar" data-bind="click: login"><i><b>conectar</b></i></button>
+                </div>
+            </form>
+
+            <div>
+                <label class="text-large"><i><b>Conectar com mídia social</b></i></label>
+                <div>
+                    <div class="col-xs-6" style="padding:0 5px 0 0;">
+                        <a id="fbButton" data-role="button" class="btn btn-block btn-media btn-facebook"><i class="fa fa-facebook"></i></a>
+                    </div>
+                    <!--<div class="col-xs-4" style="padding:0 2.5px 0 2.5px;">
+                        <a data-role="button" class="btn btn-block btn-media btn-twiter"><i class="fa fa-twitter"></i></a>
+                    </div>-->
+                    <div class="col-xs-6" style="padding:0 0 0 5px;">
+                        <a id="googleButton" data-role="button" class="btn btn-block btn-media btn-google"><i class="fa fa-google-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12" style="padding-top:10px">
+                    <a data-role="button" class="btn btn-block btn-criar-conta" style="font-family:UbuntuM" data-bind="click: criarConta"><b>criar conta</b></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--FIM LOGIN DIV-->
+    <!--DEFAULT LAYOUT DIV-->
+    <div data-role="layout" data-id="default-layout">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span><img src="images/oltask.png" alt=""></span>
+            </div>
+        </div>
+    </div>
+
+    <!--BACKLAYOUT DIV-->
+    <div data-role="layout" data-id="default-back-layout">
+        <div data-role="header">
+            <div data-role="navbar">
+                <a data-role="backbutton" data-click="onBack" data-align="left" class="btn-header">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <span><img src="images/oltask.png" alt=""></span>
+            </div>
+        </div>
+    </div>
+
+    <!--CLIENTE DEFAULT LAYOUT DIV-->
+    <div data-role="layout" data-id="cliente-default-layout">
+        <div data-role="header">
+            <div data-role="navbar" class="cliente-navbar">
+                <span data-role="view-title"></span>
+
+                <button data-role="button" class="btn-header" data-align="right" href="views/cliente/configuracoes.html" style="width: 75px;height: 50px;padding: 0;margin: 0;text-align: right">
+                    <i class="fa fa-bars text-right"></i>
+                </button>
+
+            </div>
+        </div>
+        <div data-role="footer" class="cliente-footer">
+            <div data-role="tabstrip" data-id="oltask-tabstrip">
+                <a href="views/cliente/main.html" data-icon="home">Home</a>
+                <a href="views/cliente/tarefas.html" data-icon="task">Tarefas</a>
+                <a href="views/cliente/profissionaisAvaliados.html" data-icon="star">Avaliações</a>
+                <a href="views/cliente/novaTarefa.html" data-icon="plus">Nova Tarefa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENTE BACK LAYOUT -->
+    <div data-role="layout" data-id="cliente-back-layout">
+        <div data-role="header">
+            <div data-role="navbar" class="cliente-navbar">
+                <button data-role="backbutton" data-click="onBack" class="btn-header" data-align="left" style="width: 75px;height: 50px;padding: 0;margin: 0;">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+    </div>
+
+    <!--CLIENTE TAREFAS LAYOUT DIV-->
+    <div data-role="layout" data-id="cliente-tarefas-layout">
+        <header data-role="header">
+            <div data-role="navbar" class="cliente-navbar">
+                <span data-role="view-title"></span>
+                <a data-role="button" class="icon_button" data-align="right"
+                   style="float: right; top: 4px;" href="views/cliente/configuracoes.html">
+                    <i class="fa fa-bars text-right" style="min-width: 40px;"></i>
+                </a>
+            </div>
+            <ul id="btnTarefasViewToggle" class="cliente-buttongroup" data-role="buttongroup"
+                data-index="0" data-align="center">
+                <li onclick="javascript: changeTarefasView(0)">Agendadas</a></li>
+                <li onclick="javascript: changeTarefasView(1)">Pendentes</a></li>
+                <li onclick="javascript: changeTarefasView(2)">Concluidas</li>
+            </ul>
+        </header>
+        <div data-role="footer" class="cliente-footer">
+            <div data-role="tabstrip" data-id="oltask-tabstrip">
+                <a href="views/cliente/main.html" data-icon="home">Home</a>
+                <a onclick="javascript: showTarefas()" data-icon="task">Tarefas</a>
+                <a href="views/cliente/avaliados.html" data-icon="star">Avaliações</a>
+                <a href="UIviewscliente/novaTarefa.html" data-icon="plus">Nova Tarefa</a>
+            </div>
+        </div>
+    </div>
+
+    <!--Profissional Home Layout-->
+    <div data-role="layout" data-id="profissional-home-layout">
+        <div data-role="header">
+            <div data-role="navbar" class="profissional-navbar">
+                <span data-role="view-title"></span>
+                <button data-role="button" class="btn-header" data-align="right" href="views/profissional/configuracoes.html" style="width: 75px;height: 50px;padding: 0;margin: 0;text-align: right">
+                    <i class="fa fa-bars text-right"></i>
+                </button>
+
+            </div>
+        </div>
+        <div data-role="footer" class="profissional-footer">
+            <div data-role="tabstrip" data-id="oltask-tabstrip">
+                <a href="views/profissional/agendaDeTarefas.html" data-icon="task">Tarefas</a>
+                <a href="views/profissional/proposta.html" data-icon="plus">Propostas</a>
+                <a href="views/profissional/clientesAvaliados.html" data-icon="star">Avaliações</a>
+            </div>
+        </div>
+    </div>
+
+    <!--Profissional Configuracoes Layout-->
+    <!-- CLIENTE BACK LAYOUT -->
+    <div data-role="layout" data-id="profissional-back-layout">
+        <div data-role="header">
+            <div data-role="navbar" class="profissional-navbar">
+                <a data-role="backbutton" class="icon_button" data-align="left">
+                    <i class="fa fa-chevron-left text-left" style="min-width: 40px;"></i>
+                </a>
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="modalview" id="modalview-cartaoDoProfissional" data-model="CartaoDoProfissionalModel" style="width: 90%; display:none;">
+        <div data-role="header">
+            <div data-role="navbar">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <img data-bind="attr: { src: serviceProvider.image }" onerror="imageError(this)" class="profissional thumbnail rounded" />
+                    </div>
+                </div>
+                <label class="name" data-bind="text: serviceProvider.name">Nome Completo do Profissional</label>
+                <br />
+                <div data-bind="visible: serviceProvider.age"><label class="age" data-bind="text: serviceProvider.age" /> </label> anos</div>
+                <button data-click="closeModalViewCartao" data-role="button" data-align="right" class="close-button" style="width: 70px; height:40px; padding: 0;margin: 0;">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="col-xs-9" style="padding:0">
+                <ul data-role="listview" data-style="inset" class="info-list">
+                    <li data-bind="visible: serviceProvider.tasks">
+                        <i class="fa fa-check-square-o"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: serviceProvider.tasks"></label>
+                            <br />
+                            <label class="info-description">Tarefas Realizadas</label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: serviceProvider.city">
+                        <i class="fa fa-map-marker"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: serviceProvider.state">RJ</label>
+                            <br />
+                            <label class="info-description" data-bind="text: serviceProvider.city"></label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: serviceProvider.phone">
+                        <i class="fa fa-phone"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: serviceProvider.ddd"></label>
+                            <br />
+                            <label class="info-description" data-bind="text: serviceProvider.phone"></label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: serviceProvider.email">
+                        <i class="fa fa-at"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: email1"></label>
+                            <br />
+                            <label class="info-description" data-bind="text: email2"></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-3" style="height: 15em;">
+                <div class="media-avaliacao" data-bind="visible: serviceProvider.averageReview">
+                    <div style="height:11.2em; position:relative">
+                        <div class="star-rating">
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                        <div class="star-rating selected" data-bind="style:{height:averageReview}">
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                    </div>
+                    <div class="arrow-top"></div>
+                    <img src="images/oltask_app_icon_white.png" style="position: absolute;top: 12.8em;right: 0; width:2.2em;" />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="modalview-republicarTarefa" data-role="modalview" style="width: 90%; display:none;" data-model="ClienteTarefasModel" data-open="ClienteTarefasModel.edit" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <label class="title" data-bind="text : tarefaSelecionada.title" />
+                <button data-bind="click: closeDialog" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="col-xs-12" style="padding:10px">
+                <label class="description" data-bind="text : tarefaSelecionada.description" />
+            </div>
+            <div class="col-xs-12" style="padding:10px">
+                <div class="form-group table" style="font-family: UbuntuB; font-size:1.2em">
+                    <label class="table-cell">
+                        <b>Dia</b>
+                    </label>
+                    <input id="data" type="date" name="date" required="required" class="form-control table-cell">
+                </div>
+
+                <div class="form-group table" style="font-family: UbuntuB; font-size:1.2em">
+                    <input id="horaInicio1" type="time" step='60' name="horaInicio1" class="form-control table-cell" required="required">
+                    <label class="table-cell" style="padding:0 4px;">às</label>
+                    <input id="horaFim1" type="time" name="horaFim1" class="form-control table-cell" required="required">
+                    <!--div class="col-xs-5">
+                        <input id="horaInicio1" type="time" step='60' name="horaInicio1" class="form-control" required="required">
+                    </div>
+
+                    <div class="col-xs-2 text-center" style="top:10px;">
+                        <label>às</label>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <input id="horaFim1" type="time" name="horaFim1" class="form-control" required="required">
+                    </div-->
+                </div>
+
+                <div class="form-group table" style="font-family: UbuntuB; font-size:1.2em">
+                    <input id="horaInicio2" type="time" step='60' name="horaInicio2" class="form-control table-cell" required="required">
+                    <label class="table-cell" style="padding:0 4px;">às</label>
+                    <input id="horaFim2" type="time" name="horaFim2" class="form-control table-cell" required="required">
+                    <!--<div class="col-xs-5">
+                        <input id="horaInicio2" type="time" step='60' name="horaInicio2" class="form-control" required="required">
+                    </div>
+
+                    <div class="col-xs-2 text-center" style="top:8px;">
+                        <label>às</label>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <input id="horaFim2" type="time" name="horaFim2" class="form-control" required="required">
+                    </div>-->
+                </div>
+
+            </div>
+
+            <div class="col-xs-12" style="padding: 0 10px 10px 10px">
+                <button data-role="button" class="btn-confirma" data-bind="click: republicar">
+                    <div class="img"></div>
+                    <b>CONFIRMAR</b>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalview-indicarOLTask" data-role="modalview" data-model="IndicarOLTaskModel" data-open="IndicarOLTaskModel.open" style="width: 90%; display:none;" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <img src="images/oltask.png" />
+                <button data-bind="click: close" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <form id="indicarOLTaskForm" data-role="validator">
+                <div class="col-xs-12" style="padding:10px">
+                    <label class="text-center"><i>Ajude-nos a ampliar nossa rede de profissionais e clientes. Convide seus amigos para fazer parte da comunidade OLTask.</i></label>
+                </div>
+                <div class="col-xs-12" style="padding:0 0 10px 0">
+                    <div class="input-group">
+                        <input type="email" data-bind="value: email" class="form-control" placeholder="Email" required>
+                        <span class="input-group-btn">
+                            <button data-role="button" data-bind="click: indicarOLTaskEmail" class="btn btn-blue" type="button" style="height: 40px;margin-top: 0;font-size:14px !important;">
+                                <i class="fa fa-chevron-right"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            <div class="col-xs-12" style="padding: 0 10px 10px 10px">
+                <label class="text-center"><i>Compartilhe OLTask com seus amigos nas mídias sociais.</i></label>
+            </div>
+
+            <div class="row" style="margin: 2em;">
+                <div class="col-xs-4" style="padding:0 5px 0 0; font-size:2em; text-align:center; color:gray;">
+                    <img src="images/oltask_aplicativo_facebook_circle_on.png">
+                </div>
+                <div class="col-xs-4" style="padding:0 2.5px 0 2.5px; font-size:2em; text-align:center; color:gray;">
+                    <img src="images/oltask_aplicativo_twitter_circle_on.png">
+                </div>
+                <div class="col-xs-4" style="padding:0 0 0 5px; font-size:2em; text-align:center; color:gray;">
+                    <img src="images/oltask_aplicativo_google_circle_on.png">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modalview-alterarDadosConfirmacao" data-role="modalview" data-model="ClienteConfiguracoesModel" style="width: 90%; display:none;" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <button data-bind="click: closeConfirmDialog" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="padding:10px 0 10px 0">
+            <div class="col-xs-12 table" style="margin:0">
+                <div class="table-cell text-center" style="padding-right: 20px">
+                    <img height="150" src="images/oltask_aplicativo_icon_padlock.png" alt="">
+                </div>
+                <div class="table-cell">
+                    <label class="text-left"><i>Por motivos de segurança digite sua senha para salvar as alterações feitas em sua conta.</i></label>
+                </div>
+            </div>
+            <form id="alterarDadosConfirmacaoForm" data-role="validator">
+                <div class="col-xs-12" style="padding-top:20px">
+                    <div class="form-group">
+                        <input type="password" data-bind="value: password" class="form-control" placeholder="Senha" required>
+                    </div>    
+                </div>
+            </form>
+            <div class="col-xs-12">
+                <button data-bind="click: salvarAccount" class="btn btn-block btn-green"><b><i>Salvar Alterações</i></b></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalview-alterarSenha" data-role="modalview" data-model="ClienteConfiguracoesModel" style="width: 90%; display:none;" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <label class="title">Alterar Senha</label>
+                <button data-bind="click: closeAlterarSenhaDialog" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="padding:10px 0 10px 0">
+            <form id="alterarSenhaForm" data-role="validator">
+                <div class="col-xs-12" style="padding-top:20px">
+                    <div class="form-group">
+                        <input type="password" data-bind="value: password" class="form-control" placeholder="Senha Atual" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="newPassword" data-bind="value: newPassword" class="form-control" placeholder="Nova Senha" pattern=".{6,}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="confirmNewPassword" data-bind="value: confirmNewPassword" class="form-control" placeholder="Confirmar Nova Senha" required data-equal-field="newPassword" data-equal-msg='A confirmação da senha não confere'>
+                    </div>
+                </div>
+            </form>
+            <div class="col-xs-12">
+                <button data-bind="click: alterarSenha" class="btn btn-block btn-green"><b><i>Alterar Senha</i></b></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalview-enviarProposta" data-role="modalview" style="width: 90%; display:none;" class="dialog" data-model="ProfissionalPropostas" >
+        <div data-role="header">
+            <div data-role="navbar">
+                <label class="title" data-bind="text : selectedJob.title">00/00/0000</label>
+
+                <button data-click="closeModalEnviarProposta" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="container-fluid">
+
+            <div class="container-fluid" style="font-size:1.5em;">
+
+                <div class="row" data-bind="visible: selectedJobGetDate()">
+                    <label style="padding:10px 0 10px 0;" data-bind="text: selectedJobGetDate()">
+
+                    </label>
+                </div>
+                <div class="row" data-bind="visible: selectedJobGetOption1()">
+                    <label style="padding:10px 0 10px 0;width:80%;" data-bind="text: selectedJobGetOption1()">00:00</label>
+                    <input name="dateOption" type="radio" style="width:15%;height:25px;" value="0">
+
+                </div>
+                <div class="row" data-bind="visible: selectedJobGetOption2()">
+                    <label style="padding:10px 0 10px 0;width:80%;" data-bind="text: selectedJobGetOption2()">00:00</label>
+                    <input name="dateOption" type="radio" style="width:15%;height:25px;" value="1">
+                </div>
+                <div class="row" style="padding: 10px 0 10px 0;">
+
+                    <label style="width:35%;">
+                        Valor R$
+                    </label>
+
+                    <input name="propostaValor" type="number" min="0" style="width:60%;"> <br />
+
+                </div>
+                <div class="row" style="padding: 10px 10px 10px 0;">
+                    <button data-role="button" class="btn-confirma" style="width:100%;" onclick="ProfissionalPropostas.confirmar()">
+
+                        <b>CONFIRMAR</b>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function closeModalViewCartao() {
+            $("#modalview-cartaoDoProfissional").kendoMobileModalView("close");
+        };
+        function closeModalEnviarProposta() {
+            $("#modalview-enviarProposta [name=dateOption]:checked").attr("checked", false);
+            $("#modalview-enviarProposta [name=propostaValor]").val("");
+            $("#modalview-enviarProposta").kendoMobileModalView("close");
+        }
+    </script>
+
+</body>
+
+</html>

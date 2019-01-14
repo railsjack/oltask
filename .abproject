@@ -1,0 +1,54 @@
+{
+  "ProjectName": "Oltask-testes",
+  "ProjectGuid": "f696c0dd-f03e-4206-87d8-a21cce8e545a",
+  "projectVersion": 1,
+  "AppIdentifier": "com.magnidea.oltask",
+  "DisplayName": "OLTask",
+  "Author": "MAGNIDEA",
+  "Description": "OLTask",
+  "BundleVersion": "1.9",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.5.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_LOCATION",
+    "ID_CAP_NETWORKING"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{5fdbfeb3-6efa-47cb-90f8-ed1ccedd9554}",
+  "WP8ProductID": "{2d2a1c97-9eea-4687-99db-cc032c839186}",
+  "WPSdk": "8.0",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ],
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8PackageIdentityName": "1234Telerik.com.magnidea.oltask",
+  "CorePlugins": [
+    "org.apache.cordova.device",
+    "org.apache.cordova.file",
+    "org.apache.cordova.file-transfer",
+    "org.apache.cordova.inappbrowser",
+    "org.apache.cordova.dialogs",
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.statusbar"
+  ]
+}
